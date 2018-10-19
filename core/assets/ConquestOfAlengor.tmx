@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="16" tileheight="16" infinite="0" nextobjectid="1">
- <tileset firstgid="1" source="../Users/bidamin/Downloads/rrrroguelikeSheet_transparent.tsx"/>
- <tileset firstgid="1768" source="../Users/bidamin/Downloads/roguelikeDungeon_transparent.tsx"/>
+ <tileset firstgid="1" source="rrrroguelikeSheet_transparent.tsx"/>
+ <tileset firstgid="1768" source="roguelikeDungeon_transparent.tsx"/>
  <tileset firstgid="2290" source="../Users/bidamin/Downloads/try.tsx"/>
  <layer name="Ground" width="200" height="200">
   <data encoding="csv">
