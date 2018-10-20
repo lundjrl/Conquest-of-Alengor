@@ -1,5 +1,7 @@
 package com.conquestrpg.game.desktop;
 
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.conquestrpg.game.RPGame;
