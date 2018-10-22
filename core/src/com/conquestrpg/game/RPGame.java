@@ -1,33 +1,108 @@
 package com.conquestrpg.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.*;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+//import com.conquestrpg.screens.MainGameScreen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-public class RPGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	
+public class RPGame extends ApplicationAdapter implements InputProcessor {
+	TiledMap tiledMap;
+	OrthographicCamera camera;
+	TiledMapRenderer tiledMapRenderer;
+
+
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+
+		float w = Gdx.graphics.getWidth();
+		float h = Gdx.graphics.getHeight();
+
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false,w,h);
+		camera.update();
+		tiledMap = new TmxMapLoader().load("ConquestOfAlengor.tmx");
+		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+
+		Gdx.input.setInputProcessor(this);
+
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(0, 1, 0, 1);
+		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+		camera.update();
+		tiledMapRenderer.setView(camera);
+		tiledMapRenderer.render();
+
 	}
 	
 	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
+	public void dispose(){
+		//batch.dispose();
+		//img.dispose();
+
+		//mainGameScreen.dispose();
+
+		//batch.dispose();
+		//img.dispose();
+	}
+
+	@Override
+	public boolean keyDown(int keycode) {
+		return false;
+	}
+
+	@Override
+	public boolean keyUp(int keycode) {
+		if(keycode == Input.Keys.LEFT)
+			camera.translate(-32,0);
+		if(keycode == Input.Keys.RIGHT)
+			camera.translate(32,0);
+		if(keycode == Input.Keys.UP)
+			camera.translate(0,32);
+		if(keycode == Input.Keys.DOWN)
+			camera.translate(0,-32);
+		return false;
+	}
+
+	@Override
+	public boolean keyTyped(char character) {
+		return false;
+	}
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		return false;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		return false;
+	}
+
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		return false;
+	}
+
+	@Override
+	public boolean mouseMoved(int screenX, int screenY) {
+		return false;
+	}
+
+	@Override
+	public boolean scrolled(int amount) {
+		return false;
 	}
 }
