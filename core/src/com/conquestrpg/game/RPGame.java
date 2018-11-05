@@ -27,10 +27,14 @@ public class RPGame extends ApplicationAdapter implements InputProcessor {
 		float h = Gdx.graphics.getHeight();
 
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, (w/2), (h/2));
+		camera.setToOrtho(false, (w/3), (h/3));
 		camera.update();
 		tiledMap = new TmxMapLoader().load("ConquestOfAlengor.tmx");
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+
+		// Camera Start
+		camera.translate(800, 270);
+
 
 		Gdx.input.setInputProcessor(this);
 

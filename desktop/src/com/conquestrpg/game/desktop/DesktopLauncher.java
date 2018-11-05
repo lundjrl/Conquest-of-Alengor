@@ -13,8 +13,8 @@ public class DesktopLauncher {
 		// Setup Configuration
 		config.title = "Conquest of Alengor"; // Title on window
 		config.useGL30 = false; // Use OpenGL 2.0
-		config.width = 800;
-		config.height = 600;
+		config.width = 1000;
+		config.height = 800;
 
 		// Setup application
 		Application app = new LwjglApplication(new RPGame(), config);
