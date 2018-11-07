@@ -19,6 +19,10 @@ public class RPGame extends ApplicationAdapter implements InputProcessor {
 	OrthographicCamera camera;
 	TiledMapRenderer tiledMapRenderer;
 
+	SpriteBatch character;
+	Texture texture;
+	Sprite sprite;
+
 
 	@Override
 	public void create () {
@@ -37,6 +41,12 @@ public class RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 		Gdx.input.setInputProcessor(this);
+
+
+		// Character
+
+		character = new SpriteBatch();
+		//texture = new Texture(Gdx.files.internal(""))
 
 	}
 
