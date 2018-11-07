@@ -13,6 +13,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector3;
 
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	TiledMap tiledMap;
@@ -31,6 +32,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		float h = Gdx.graphics.getHeight();
 
 		camera = new OrthographicCamera();
+		//camera.setToOrtho(false, (w), (h));
+		//Scale
 		camera.setToOrtho(false, (w/3), (h/3));
 		camera.update();
 		tiledMap = new TmxMapLoader().load("ConquestOfAlengor.tmx");
@@ -44,9 +47,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 		// Character
-
 		character = new SpriteBatch();
-		//texture = new Texture(Gdx.files.internal(""))
+		texture = new Texture(Gdx.files.internal("Main.png"));
+		sprite = new Sprite(texture);
 
 	}
 
@@ -58,6 +61,12 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		camera.update(); //This changes camera position
 		tiledMapRenderer.setView(camera); //type something or whatever
 		tiledMapRenderer.render();
+
+		// Render character
+		character.setProjectionMatrix(camera.combined);
+		character.begin();;
+		sprite.draw(character);
+		character.end();
 
 	}
 	
@@ -97,9 +106,11 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		return false;
+		Vector3 clickCoordinates = new Vector3(screenX,screenY,0);
+		Vector3 position = camera.unproject(clickCoordinates);
+		sprite.setPosition(position.x, position.y);
+		return true;
 	}
-
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		return false;
