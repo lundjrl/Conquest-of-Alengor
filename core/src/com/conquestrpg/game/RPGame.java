@@ -50,6 +50,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		character = new SpriteBatch();
 		texture = new Texture(Gdx.files.internal("Main.png"));
 		sprite = new Sprite(texture);
+		sprite.translate(1000, 350);
 
 	}
 
@@ -90,12 +91,16 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public boolean keyUp(int keycode) {
 		if(keycode == Input.Keys.LEFT)
 			camera.translate(-32,0);
+			sprite.translate(-64, 0);
 		if(keycode == Input.Keys.RIGHT)
 			camera.translate(32,0);
+			sprite.translate(64, 0);
 		if(keycode == Input.Keys.UP)
 			camera.translate(0,32);
+			sprite.translate(0, 64);
 		if(keycode == Input.Keys.DOWN)
 			camera.translate(0,-32);
+			sprite.translate(0, -64);
 		return false;
 	}
 
@@ -106,9 +111,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		Vector3 clickCoordinates = new Vector3(screenX,screenY,0);
-		Vector3 position = camera.unproject(clickCoordinates);
-		sprite.setPosition(position.x, position.y);
+		//Vector3 clickCoordinates = new Vector3(screenX,screenY,0);
+		//Vector3 position = camera.unproject(clickCoordinates);
+		//sprite.setPosition(position.x, position.y);
 		return true;
 	}
 	@Override
