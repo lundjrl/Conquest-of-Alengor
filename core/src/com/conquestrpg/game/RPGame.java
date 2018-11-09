@@ -88,6 +88,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public boolean keyUp(int keycode) {
+
 		if(keycode == Input.Keys.LEFT)
 			camera.translate(-32,0);
 		if(keycode == Input.Keys.RIGHT)
