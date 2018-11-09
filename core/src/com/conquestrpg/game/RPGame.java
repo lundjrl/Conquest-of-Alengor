@@ -10,30 +10,41 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
+
+	// Maps
 	TiledMap tiledMap;
 	OrthographicCamera camera;
 	TiledMapRenderer tiledMapRenderer;
+	MapLayer collisionLayer;
+	int i = 0;
 
+	// Player
 	SpriteBatch character;
 	Texture texture;
 	Sprite sprite;
 	Music music;
+	Rectangle playerBox;
 
 	// Movement
     float characterSpeed = 5.0f;
+    float maxSpeed = 1.0f;
     float characterX;
     float characterY;
 
     // Tilemap rendering
-    int[] background = {0,3};
-    int[] overlay = {1,2,4,5,6};
+    int[] background = {0,1,2,3,4,6,7};
+    int[] overlay = {5};
 
 
 	@Override
@@ -47,12 +58,19 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		//Scale
 		camera.setToOrtho(false, (w/3), (h/3));
 		camera.update();
+
+		// Map
 		tiledMap = new TmxMapLoader().load("ConquestOfAlengor.tmx");
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+		// Get collision layer
+		collisionLayer = tiledMap.getLayers().get("COLLISION_LAYER");
+
+		// Music
 		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Sheet.mp3"));
 		music.setLooping(true);
 		music.setVolume(0.5f);
 		music.play();
+
 		// Camera Start
 		camera.translate(800, 270);
 
@@ -65,8 +83,10 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		texture = new Texture(Gdx.files.internal("Main.png"));
 		sprite = new Sprite(texture);
 
+
 		// Move in multiples of 16
 		sprite.translate(992, 336);
+		playerBox = new Rectangle(sprite.getX(), sprite.getY(), 0.0f, 0.5f); // For collisions
 
 		// Set Camera position the same as the character
 		camera.position.set(sprite.getX(), sprite.getY(), 0);
@@ -89,7 +109,19 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
             characterY -= Gdx.graphics.getDeltaTime() * characterSpeed;
 
 
+        // Implement max speed
+        if(characterX >= maxSpeed)
+        	characterX = maxSpeed;
+        else if(characterX <= -maxSpeed)
+			characterX = -maxSpeed;
 
+        if(characterY >= maxSpeed)
+        	characterY = maxSpeed;
+        else if(characterY <= -maxSpeed)
+			characterY = -maxSpeed;
+
+
+        // Move character and camera at the same time.
         sprite.translate(characterX, characterY);
         camera.position.set(sprite.getX(), sprite.getY(), 0);
 
@@ -105,6 +137,13 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		character.begin();
 		sprite.draw(character);
 		character.end();
+		playerBox.setCenter(sprite.getX(), sprite.getY());
+		if(isCollision(playerBox)){
+			i++;
+			System.out.println("Collision!" + i);
+			characterX = 0.0f;
+			characterY = 0.0f;
+		}
 
         // Render over character
         tiledMapRenderer.render(overlay);
@@ -124,11 +163,25 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		//img.dispose();
 	}
 
+	// Collision method
+	private boolean isCollision(Rectangle playerBox){
+		MapLayer testCollision = collisionLayer;
+		Rectangle rec = null;
+
+		for(MapObject object: testCollision.getObjects()){
+			if(object instanceof RectangleMapObject){
+				rec = ((RectangleMapObject)object).getRectangle();
+				if(playerBox.overlaps(rec)){
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
 	@Override
 	public boolean keyDown(int keycode) {
-
-
-
 	    return false;
 	}
 
