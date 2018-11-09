@@ -24,6 +24,15 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	Texture texture;
 	Sprite sprite;
 
+	// Movement
+    float characterSpeed = 5.0f;
+    float characterX;
+    float characterY;
+
+    // Tilemap rendering
+    int[] background = {0,3};
+    int[] overlay = {1,2,4,5,6};
+
 
 	@Override
 	public void create () {
@@ -63,16 +72,37 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public void render () {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+		// Input
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT))
+            characterX -= Gdx.graphics.getDeltaTime() * characterSpeed;
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT))
+            characterX += Gdx.graphics.getDeltaTime() * characterSpeed;
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_UP))
+            characterY += Gdx.graphics.getDeltaTime() * characterSpeed;
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN))
+            characterY -= Gdx.graphics.getDeltaTime() * characterSpeed;
+
+
+
+        sprite.translate(characterX, characterY);
+        camera.position.set(sprite.getX(), sprite.getY(), 0);
+
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update(); //This changes camera position
 		tiledMapRenderer.setView(camera); //type something or whatever
-		tiledMapRenderer.render();
+
+        // Render below character
+		tiledMapRenderer.render(background);
 
 		// Render character
 		character.setProjectionMatrix(camera.combined);
-		character.begin();;
+		character.begin();
 		sprite.draw(character);
 		character.end();
+
+        // Render over character
+        tiledMapRenderer.render(overlay);
 
 	}
 	
@@ -89,19 +119,22 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		return false;
+
+
+
+	    return false;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		if(keycode == Input.Keys.LEFT)
-			sprite.translate(-16, 0);
-		if(keycode == Input.Keys.RIGHT)
-			sprite.translate(16, 0);;
-		if(keycode == Input.Keys.UP)
-			sprite.translate(0, 16);
-		if(keycode == Input.Keys.DOWN)
-			sprite.translate(0, -16);
+	//	if(keycode == Input.Keys.LEFT)
+	//		sprite.translate(-16, 0);
+	//	if(keycode == Input.Keys.RIGHT)
+	//		sprite.translate(16, 0);;
+	//	if(keycode == Input.Keys.UP)
+	//		sprite.translate(0, 16);
+	//	if(keycode == Input.Keys.DOWN)
+	//		sprite.translate(0, -16);
 
 		// Move camera into position
 		camera.position.set(sprite.getX(), sprite.getY(), 0);
