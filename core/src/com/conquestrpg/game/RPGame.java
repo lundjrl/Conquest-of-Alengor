@@ -51,6 +51,12 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		texture = new Texture(Gdx.files.internal("Main.png"));
 		sprite = new Sprite(texture);
 
+		// Move in multiples of 16
+		sprite.translate(992, 336);
+
+		// Set Camera position the same as the character
+		camera.position.set(sprite.getX(), sprite.getY(), 0);
+
 	}
 
 	@Override
@@ -90,13 +96,16 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public boolean keyUp(int keycode) {
 
 		if(keycode == Input.Keys.LEFT)
-			camera.translate(-32,0);
+			sprite.translate(-16, 0);
 		if(keycode == Input.Keys.RIGHT)
-			camera.translate(32,0);
+			sprite.translate(16, 0);;
 		if(keycode == Input.Keys.UP)
-			camera.translate(0,32);
+			sprite.translate(0, 16);
 		if(keycode == Input.Keys.DOWN)
-			camera.translate(0,-32);
+			sprite.translate(0, -16);
+
+		// Move camera into position
+		camera.position.set(sprite.getX(), sprite.getY(), 0);
 		return false;
 	}
 
@@ -107,9 +116,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		Vector3 clickCoordinates = new Vector3(screenX,screenY,0);
-		Vector3 position = camera.unproject(clickCoordinates);
-		sprite.setPosition(position.x, position.y);
+		//Vector3 clickCoordinates = new Vector3(screenX,screenY,0);
+		//Vector3 position = camera.unproject(clickCoordinates);
+		//sprite.setPosition(position.x, position.y);
 		return true;
 	}
 	@Override
