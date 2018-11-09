@@ -24,6 +24,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	Texture texture;
 	Sprite sprite;
 
+	boolean leftMove;
+	boolean rightMove;
+
 
 	@Override
 	public void create () {
@@ -59,6 +62,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	}
 
+	//For every frame :)
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
@@ -74,6 +78,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		sprite.draw(character);
 		character.end();
 
+		Gdx.input.isKeyPressed(Input.Keys.LEFT);
+
 	}
 	
 	@Override
@@ -87,24 +93,42 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		//img.dispose();
 	}
 
+
 	@Override
 	public boolean keyDown(int keycode) {
-		return false;
+
+			switch (keycode) {
+				case Input.Keys.LEFT:
+					sprite.translate(-16, 0);
+					break;
+				case Input.Keys.RIGHT:
+					sprite.translate(16, 0);
+					break;
+				case Input.Keys.DOWN:
+					sprite.translate(0, -16);
+					break;
+				case Input.Keys.UP:
+					sprite.translate(0, 16);
+					break;
+			}
+			camera.position.set(sprite.getX(), sprite.getY(), 0);
+
+		return true;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		if(keycode == Input.Keys.LEFT)
-			sprite.translate(-16, 0);
-		if(keycode == Input.Keys.RIGHT)
-			sprite.translate(16, 0);;
-		if(keycode == Input.Keys.UP)
-			sprite.translate(0, 16);
-		if(keycode == Input.Keys.DOWN)
-			sprite.translate(0, -16);
-
-		// Move camera into position
-		camera.position.set(sprite.getX(), sprite.getY(), 0);
+//		if(keycode == Input.Keys.LEFT)
+//			sprite.translate(-16, 0);
+//		if(keycode == Input.Keys.RIGHT)
+//			sprite.translate(16, 0);
+//		if(keycode == Input.Keys.UP)
+//			sprite.translate(0, 16);
+//		if(keycode == Input.Keys.DOWN)
+//			sprite.translate(0, -16);
+//
+//		// Move camera into position
+//		camera.position.set(sprite.getX(), sprite.getY(), 0);
 		return false;
 	}
 
@@ -122,7 +146,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	}
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		return false;
+		return true;
 	}
 
 	@Override
