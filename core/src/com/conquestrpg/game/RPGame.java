@@ -49,7 +49,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		camera.update();
 		tiledMap = new TmxMapLoader().load("ConquestOfAlengor.tmx");
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
-		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Alley.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Sheet.mp3"));
 		music.setLooping(true);
 		music.setVolume(0.5f);
 		music.play();
