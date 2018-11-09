@@ -67,6 +67,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 		// Music
 		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Sheet.mp3"));
+		//Set this below audio to maybe a boss fight or while talking to an NPC
+		//music = Gdx.audio.newMusic(Gdx.files.internal("Lounge Game2.wav"));
 		music.setLooping(true);
 		music.setVolume(0.5f);
 		music.play();
