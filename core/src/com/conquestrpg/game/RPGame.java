@@ -1,6 +1,7 @@
 package com.conquestrpg.game;
 
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -23,6 +24,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	SpriteBatch character;
 	Texture texture;
 	Sprite sprite;
+	Music music;
 
 	// Movement
     float characterSpeed = 5.0f;
@@ -47,7 +49,10 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		camera.update();
 		tiledMap = new TmxMapLoader().load("ConquestOfAlengor.tmx");
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
-
+		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Alley.mp3"));
+		music.setLooping(true);
+		music.setVolume(0.5f);
+		music.play();
 		// Camera Start
 		camera.translate(800, 270);
 
@@ -108,6 +113,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	
 	@Override
 	public void dispose(){
+		super.dispose();
+		music.dispose();
 		//batch.dispose();
 		//img.dispose();
 
@@ -172,4 +179,5 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public boolean scrolled(int amount) {
 		return false;
 	}
+
 }
