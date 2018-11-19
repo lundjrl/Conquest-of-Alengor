@@ -19,8 +19,16 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.conquestrpg.game.States.GameStateManager;
+import com.conquestrpg.game.States.MenuState;
 
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
+
+	//public static final int WIDTH = 800;
+	//public static final int HEIGHT = 800;
+	//public static final String TITLE = "Conquest Of Alengor";
+	private GameStateManager gsm;
+	private SpriteBatch batch;
 
 	// Maps
 	TiledMap tiledMap;
@@ -49,6 +57,11 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public void create () {
+
+		batch = new SpriteBatch();
+		gsm = new GameStateManager();
+		Gdx.gl.glClearColor(1, 0, 0, 1);
+		gsm.push(new MenuState(gsm));
 
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
@@ -99,6 +112,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public void render () {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+		gsm.update(Gdx.graphics.getDeltaTime());
+		gsm.render(batch);
 
 		// Input
         if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT))
