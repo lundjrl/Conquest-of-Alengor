@@ -52,6 +52,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
     float characterX;
     float characterY;
 
+    float saveCharX;
+    float saveCharY;
+
     // Tilemap rendering
     int[] background = {0,1,2,3,4,6,7};
     int[] overlay = {5};
@@ -112,20 +115,42 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public void render () {
+
+
+
+
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(batch);
 
+		// Save position before collision occurs
+		if(!isCollision(playerBox)) {
+			saveCharX = sprite.getX();
+			saveCharY = sprite.getY();
+		}
+
+
+
 		// Input
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT))
-            characterX -= Gdx.graphics.getDeltaTime() * characterSpeed;
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT))
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT) && !isCollision(playerBox)){
+			characterX -= Gdx.graphics.getDeltaTime() * characterSpeed;
+		}
+
+
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT) && !isCollision(playerBox)){
             characterX += Gdx.graphics.getDeltaTime() * characterSpeed;
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_UP))
+        }
+
+
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_UP) && !isCollision(playerBox)){
             characterY += Gdx.graphics.getDeltaTime() * characterSpeed;
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN))
+        }
+
+
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN) && !isCollision(playerBox)){
             characterY -= Gdx.graphics.getDeltaTime() * characterSpeed;
+        }
 
 
         // Implement max speed
@@ -139,12 +164,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
         else if(characterY <= -maxSpeed)
 			characterY = -maxSpeed;
 
-        if(frame < 60 ){
-        	frame++;
-
-		}
-        else if (frame >= 60){
-        	frame = 0;
+        // If there is a collision, move the player where they were
+		if(isCollision(playerBox)){
+			sprite.setPosition(saveCharX, saveCharY);
 		}
 
         // Move character and camera at the same time.
@@ -164,12 +186,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		sprite.draw(character);
 		character.end();
 		playerBox.setCenter(sprite.getX() + offset, sprite.getY());
-		if(isCollision(playerBox)){
-			i++;
-			System.out.println("Collision!" + i);
-			characterX = 0.0f;
-			characterY = 0.0f;
-		}
+
 
         // Render over character
         tiledMapRenderer.render(overlay);
@@ -198,6 +215,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			if(object instanceof RectangleMapObject){
 				rec = ((RectangleMapObject)object).getRectangle();
 				if(playerBox.overlaps(rec)){
+					characterX = 0.0f;
+					characterY = 0.0f;
 					return true;
 				}
 			}
