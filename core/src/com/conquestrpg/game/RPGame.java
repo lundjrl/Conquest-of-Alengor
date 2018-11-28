@@ -5,7 +5,6 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-//import com.conquestrpg.screens.MainGameScreen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -19,8 +18,10 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.conquestrpg.game.Screens.TitleScreen;
 import com.conquestrpg.game.States.GameStateManager;
 import com.conquestrpg.game.States.MenuState;
+import com.conquestrpg.game.Screens.TitleScreen;
 
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
@@ -28,7 +29,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	//public static final int HEIGHT = 800;
 	//public static final String TITLE = "Conquest Of Alengor";
 	private GameStateManager gsm;
-	private SpriteBatch batch;
+	public SpriteBatch batch;
 
 	// Maps
 	TiledMap tiledMap;
@@ -67,6 +68,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		gsm = new GameStateManager();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		gsm.push(new MenuState(gsm));
+
+		this.setScreen(new TitleScreen(this));
 
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
