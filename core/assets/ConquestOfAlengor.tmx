@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.1" tiledversion="2018.09.12" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="1676">
+<map version="1.1" tiledversion="2018.09.12" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="1780">
  <tileset firstgid="1" source="rrrroguelikeSheet_transparent.tsx"/>
  <tileset firstgid="1768" source="roguelikeDungeon_transparent.tsx"/>
  <tileset firstgid="2290" source="try.tsx"/>
@@ -1364,7 +1364,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,156,0,0,156,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,147,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,156,0,0,156,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -1646,6 +1646,94 @@
   <object id="626" x="2326" y="2273.75" width="20.5" height="13.75"/>
   <object id="1320" x="1319" y="802" width="18.6667" height="16"/>
   <object id="1495" x="369.333" y="897.667" width="13.3333" height="16"/>
+  <object id="1679" x="1857.25" y="2193.25" width="13.5" height="15.25"/>
+  <object id="1680" x="1926.13" y="1872.88" width="20.25" height="16.375"/>
+  <object id="1681" x="1985.25" y="1792.88" width="13.375" height="17.625"/>
+  <object id="1682" x="1905.38" y="1761.25" width="13" height="15.875"/>
+  <object id="1683" x="2182.5" y="1953.38" width="20" height="16"/>
+  <object id="1684" x="2209.13" y="1761.13" width="13.625" height="16.625"/>
+  <object id="1685" x="1665.36" y="1488.82" width="13.2727" height="15.3636"/>
+  <object id="1686" x="1430.55" y="1521.82" width="19.0909" height="13.8182"/>
+  <object id="1687" x="1489.27" y="1489.45" width="13.4545" height="14.7273"/>
+  <object id="1688" x="1430.67" y="1425.33" width="19.6667" height="15.3333"/>
+  <object id="1689" x="1217.25" y="1490.25" width="13.5" height="13.25"/>
+  <object id="1690" x="1122" y="1393.5" width="13" height="15"/>
+  <object id="1691" x="998.182" y="1184.18" width="20.5455" height="17.2727"/>
+  <object id="1692" x="1062" y="1152.73" width="19.0909" height="16.3636"/>
+  <object id="1693" x="769.091" y="1120.91" width="13.4545" height="15.8182"/>
+  <object id="1694" x="353.273" y="1409.09" width="13.4545" height="16.3636"/>
+  <object id="1695" x="225.75" y="1346" width="12.25" height="16.25"/>
+  <object id="1696" x="369" y="1489.63" width="13.625" height="15.375"/>
+  <object id="1698" x="149.875" y="1521.38" width="19.75" height="14.875"/>
+  <object id="1699" x="1106.91" y="289.818" width="42.5455" height="47.0909"/>
+  <object id="1700" x="2594.25" y="162.25" width="43" height="48.25"/>
+  <object id="1701" x="1846.18" y="1249.27" width="20.3636" height="16"/>
+  <object id="1702" x="1937.45" y="1569.64" width="12.9091" height="13.0909"/>
+  <object id="1703" x="2710.75" y="1777" width="19.5" height="15"/>
+  <object id="1704" x="2417.27" y="2609.27" width="13.2727" height="15.1818"/>
+  <object id="1705" x="2897.09" y="2674" width="13.0909" height="12.9091"/>
+  <object id="1706" x="1222.91" y="2657.82" width="18.3636" height="16.1818"/>
+  <object id="1707" x="913.5" y="2306.25" width="12.75" height="16"/>
+ </objectgroup>
+ <objectgroup id="12" name="NPC_LAYER">
+  <object id="1709" name="GraveyardIslandGaurd" x="528" y="2288" width="16" height="16"/>
+  <object id="1711" name="Fisherman6" x="1008.13" y="2800.13" width="15.875" height="15.875"/>
+  <object id="1712" name="Lumberjack3" x="1184.13" y="2656.13" width="15.75" height="15.75"/>
+  <object id="1713" name="Miner6" x="720" y="2352.25" width="15.75" height="15.75"/>
+  <object id="1714" name="Camper" x="1584" y="2288.13" width="16" height="16"/>
+  <object id="1715" name="Fisherman6" x="1728.25" y="2256.25" width="16" height="15.75"/>
+  <object id="1716" name="TempleGaurd" x="2000" y="2336" width="16.1818" height="16.1818"/>
+  <object id="1717" name="Outlooker3" x="2496.18" y="2656.18" width="15.6364" height="15.8182"/>
+  <object id="1718" name="Outlooker2" x="2928.25" y="2704.25" width="15.75" height="15.75"/>
+  <object id="1720" name="Outlooker1" x="2960.25" y="2704.25" width="15.5" height="15.75"/>
+  <object id="1724" name="Lumberjack2" x="2735.75" y="1808.25" width="16.25" height="16"/>
+  <object id="1726" name="Shopkeeper5" x="1664.67" y="1360" width="15.3333" height="15.6667"/>
+  <object id="1727" name="Citygoer5" x="1648" y="1520.33" width="16" height="16"/>
+  <object id="1728" name="Shopkeeper4" x="1536" y="1408" width="15.6667" height="16.3333"/>
+  <object id="1729" name="Shopkeeper3" x="1488" y="1360.33" width="16" height="15.3333"/>
+  <object id="1730" name="Shopkeeper2" x="1616" y="1232" width="16" height="16"/>
+  <object id="1732" name="Shopkeeper1" x="1471.67" y="1231.67" width="16" height="16"/>
+  <object id="1733" name="CityGoer4" x="1296" y="1488" width="15.5" height="16"/>
+  <object id="1734" name="CityGoer3" x="1472" y="1536.5" width="15.5" height="15"/>
+  <object id="1735" name="CityGoer2" x="1056.25" y="1200.25" width="15.5" height="15.5"/>
+  <object id="1736" name="CastleGaurd4" x="1296" y="864.25" width="16" height="15.75"/>
+  <object id="1737" name="CastleGaurd3" x="1312.25" y="864.25" width="16" height="16"/>
+  <object id="1738" name="CastleGaurd2" x="1328" y="863.75" width="16" height="16.5"/>
+  <object id="1739" name="CastleGaurd1" x="1344.5" y="864" width="15.75" height="16.25"/>
+  <object id="1740" name="CityGoer1" x="1631.5" y="1279.5" width="16" height="17"/>
+  <object id="1741" name="Gardener2" x="256" y="1440" width="16" height="16.25"/>
+  <object id="1743" name="Gardener1" x="96" y="1392.33" width="16" height="15.6667"/>
+  <object id="1744" name="Fisherman5" x="144.25" y="1584" width="15.75" height="16.25"/>
+  <object id="1745" name="Fisherman4" x="144" y="879.667" width="16" height="16.6667"/>
+  <object id="1746" name="Miner5" x="416" y="688.333" width="16" height="15.6667"/>
+  <object id="1747" name="Miner4" x="383.667" y="767.667" width="16.3333" height="16.3333"/>
+  <object id="1748" name="Miner3" x="544.182" y="528.182" width="16" height="15.6364"/>
+  <object id="1749" name="Miner2" x="224.667" y="304" width="15" height="15.6667"/>
+  <object id="1750" name="Miner1" x="160" y="255.667" width="16" height="16.6667"/>
+  <object id="1751" name="Farmworker17" x="2288.25" y="1311.75" width="15.75" height="16.5"/>
+  <object id="1752" name="Farmworker16" x="2048.5" y="1344" width="15.25" height="16"/>
+  <object id="1753" name="Farmworker15" x="1984" y="1359.82" width="15.8182" height="16.1818"/>
+  <object id="1754" name="Farmworker14" x="2047.67" y="1439.33" width="16.3333" height="17"/>
+  <object id="1755" name="Farmworker13" x="1950.67" y="1440" width="17.6667" height="16.3333"/>
+  <object id="1756" name="Farmworker12" x="2175.67" y="1488" width="16.3333" height="16.3333"/>
+  <object id="1757" name="Farmworker11" x="2175" y="1344" width="16.3333" height="16.3333"/>
+  <object id="1758" name="Farmworker10" x="2111.67" y="1392.67" width="16.6667" height="16"/>
+  <object id="1759" name="Farmworker9" x="2015.67" y="1487.67" width="15.6667" height="16.3333"/>
+  <object id="1760" name="Farmworker8" x="2352" y="1407.33" width="15.6667" height="16.6667"/>
+  <object id="1761" name="Farmworker7" x="2767.75" y="1312" width="16" height="16"/>
+  <object id="1762" name="Farmworker6" x="2672.33" y="1359.67" width="15" height="16.6667"/>
+  <object id="1763" name="Farmworker5" x="2736.5" y="1407.5" width="15" height="16"/>
+  <object id="1764" name="Farmworker4" x="2608.25" y="1423.75" width="15.75" height="16.5"/>
+  <object id="1765" name="Farmworker3" x="2463.67" y="1312" width="16" height="16.3333"/>
+  <object id="1766" name="Farmworker2" x="2448" y="1359.67" width="16" height="16.6667"/>
+  <object id="1767" name="Farmworker1" x="2336.33" y="1520.33" width="15.3333" height="15.6667"/>
+  <object id="1768" name="ForestGoer" x="1776.5" y="1920.5" width="15" height="15"/>
+  <object id="1770" name="Lumberjack1" x="2032" y="1568.33" width="15.6667" height="15.3333"/>
+  <object id="1771" name="GraveyardIslandWarner" x="288.333" y="2272" width="15.6667" height="16"/>
+  <object id="1774" name="Fisherman3" x="624.333" y="1616" width="15.3333" height="16.3333"/>
+  <object id="1775" name="Fisherman2" x="641.667" y="1616" width="15.6667" height="15.6667"/>
+  <object id="1776" name="Fisherman1" x="661.333" y="1616.33" width="16" height="16"/>
+  <object id="1779" name="ForestWarner" x="1392" y="2239.33" width="16.3333" height="16.6667"/>
  </objectgroup>
  <objectgroup id="10" name="COLLISION_LAYER" offsetx="0" offsety="2">
   <object id="4" x="977" y="2672.67" width="46.3333" height="78.3333"/>
@@ -1798,14 +1886,14 @@
   <object id="246" x="1623" y="2387.5" width="39" height="13.5"/>
   <object id="247" x="1650.5" y="2348.5" width="12" height="38"/>
   <object id="248" x="1652" y="2242.5" width="17.5" height="94"/>
-  <object id="249" x="1669" y="2320" width="31.5" height="13.5"/>
+  <object id="249" x="1670.33" y="2321.67" width="31.5" height="13.5"/>
   <object id="251" x="1662" y="2348.5" width="37.5" height="12"/>
   <object id="252" x="1700.5" y="2349.5" width="56" height="10"/>
   <object id="253" x="1702" y="2321.5" width="55" height="14"/>
   <object id="254" x="1671" y="2243" width="52.5" height="12.5"/>
   <object id="256" x="1713" y="2257.5" width="11" height="26.5"/>
   <object id="257" x="1722" y="2284" width="1"/>
-  <object id="258" x="1723.5" y="2274.5" width="29.5" height="9.5"/>
+  <object id="258" x="1725.17" y="2273.83" width="29.5" height="9.5"/>
   <object id="259" x="1744.5" y="2285" width="10.5" height="35"/>
   <object id="260" x="1747" y="2361" width="10.5" height="134"/>
   <object id="261" x="1757.5" y="2482.5" width="45.5" height="11.5"/>
@@ -2001,7 +2089,7 @@
   <object id="469" x="1934" y="2528" width="43.5" height="7.5"/>
   <object id="470" x="1970.5" y="2434" width="17" height="94"/>
   <object id="471" x="1988.5" y="2434.5" width="39" height="9.5"/>
-  <object id="472" x="2018" y="2349" width="16.5" height="86.5"/>
+  <object id="472" x="2016" y="2347.25" width="16.5" height="86.5"/>
   <object id="473" x="1920.5" y="2369" width="16.5" height="94"/>
   <object id="474" x="2000.5" y="2383.5" width="16.5" height="32"/>
   <object id="475" x="1842" y="2367" width="45.5" height="93.5"/>
@@ -2023,7 +2111,7 @@
   <object id="492" x="1713.5" y="2175.5" width="14" height="17"/>
   <object id="493" x="1937.5" y="2143.5" width="14.5" height="63"/>
   <object id="494" x="1968.5" y="2143.5" width="15" height="64"/>
-  <object id="495" x="2018" y="2130.5" width="13.5" height="204"/>
+  <object id="495" x="2016.5" y="2131.75" width="13.5" height="204"/>
   <object id="496" x="1760.67" y="2095.33" width="318.667" height="32.6667"/>
   <object id="497" x="2031.33" y="2131.33" width="159.333" height="12"/>
   <object id="498" x="2178.67" y="2032" width="14" height="98"/>
@@ -2328,7 +2416,7 @@
   <object id="815" x="1283" y="1278" width="9" height="13"/>
   <object id="816" x="1361" y="1279" width="14" height="14"/>
   <object id="817" x="1714" y="1258" width="72" height="16"/>
-  <object id="818" x="1645" y="1438" width="50" height="60"/>
+  <object id="818" x="1645.75" y="1440.75" width="50" height="60"/>
   <object id="819" x="1569" y="1448" width="61" height="69"/>
   <object id="820" x="1522" y="1456" width="45" height="108"/>
   <object id="821" x="1473" y="1440" width="47" height="59"/>
@@ -2888,7 +2976,7 @@
   <object id="1406" x="95.5" y="1503" width="17" height="73"/>
   <object id="1407" x="112" y="1549.5" width="16.5" height="41.5"/>
   <object id="1408" x="192.5" y="1488" width="30" height="30.5"/>
-  <object id="1409" x="128" y="1488.5" width="64" height="47"/>
+  <object id="1409" x="128.5" y="1486.13" width="64" height="47"/>
   <object id="1410" x="160.5" y="1373.5" width="30" height="32.5"/>
   <object id="1411" x="64" y="1376" width="30.5" height="61"/>
   <object id="1412" x="59.5" y="1343" width="20" height="34"/>
@@ -3129,6 +3217,8 @@
   <object id="1673" x="240" y="226.667" width="63.3333" height="43.3333"/>
   <object id="1674" x="194" y="274" width="11.3333" height="8"/>
   <object id="1675" x="498" y="272.667" width="10" height="10"/>
+  <object id="1678" x="1792.25" y="2140.25" width="143" height="64.75"/>
+  <object id="1778" x="905.333" y="2252.67"/>
  </objectgroup>
  <objectgroup id="11" name="PLAYER_SPAWN_LAYER">
   <object id="33" x="976.333" y="2849" width="14.6667" height="15"/>
