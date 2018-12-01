@@ -40,12 +40,13 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	int frame = 0;
 
 	// Player
-	SpriteBatch character;
-	Texture texture;
-	Sprite sprite;
+	private Player player;
+//	SpriteBatch character;
+//	Texture texture;
+//	Sprite sprite;
 	Music music;
-	Rectangle playerBox;
-	float offset = 8.0f; // pixel offset for player collision
+//	Rectangle playerBox;
+//	float offset = 8.0f; // pixel offset for player collision
 
 	// Movement
     float characterSpeed = 5.0f;
@@ -69,13 +70,12 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		gsm.push(new MenuState(gsm));
 
-		this.setScreen(new TitleScreen(this));
+		//this.setScreen(new TitleScreen(this));
 
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 
 		camera = new OrthographicCamera();
-		//camera.setToOrtho(false, (w), (h));
 		//Scale
 		camera.setToOrtho(false, (w/3), (h/3));
 		camera.update();
@@ -101,18 +101,20 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		Gdx.input.setInputProcessor(this);
 
 
-		// Character
-		character = new SpriteBatch();
-		texture = new Texture(Gdx.files.internal("Main.png"));
-		sprite = new Sprite(texture);
-
-
-		// Move in multiples of 16
-		sprite.translate(992, 336);
-		playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
-
+//		// Character
+//		character = new SpriteBatch();
+//		texture = new Texture(Gdx.files.internal("Main.png"));
+//		sprite = new Sprite(texture);
+//
+//
+//		// Move in multiples of 16
+//		sprite.translate(992, 336);
+//		playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
+//
 		// Set Camera position the same as the character
-		camera.position.set(sprite.getX(), sprite.getY(), 0);
+
+		player = new Player();
+		camera.position.set(player.getSprite().getX(), player.getSprite().getY(), 0);
 
 	}
 
@@ -128,30 +130,30 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		gsm.render(batch);
 
 		// Save position before collision occurs
-		if(!isCollision(playerBox)) {
-			saveCharX = sprite.getX();
-			saveCharY = sprite.getY();
+		if(!isCollision(player.getPlayerBox())) {
+			saveCharX = player.getSprite().getX();
+			saveCharY = player.getSprite().getY();
 		}
 
 
 
 		// Input
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT) && !isCollision(playerBox)){
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT) && !isCollision(player.getPlayerBox())){
 			characterX -= Gdx.graphics.getDeltaTime() * characterSpeed;
 		}
 
 
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT) && !isCollision(playerBox)){
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT) && !isCollision(player.getPlayerBox())){
             characterX += Gdx.graphics.getDeltaTime() * characterSpeed;
         }
 
 
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_UP) && !isCollision(playerBox)){
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_UP) && !isCollision(player.getPlayerBox())){
             characterY += Gdx.graphics.getDeltaTime() * characterSpeed;
         }
 
 
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN) && !isCollision(playerBox)){
+        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN) && !isCollision(player.getPlayerBox())){
             characterY -= Gdx.graphics.getDeltaTime() * characterSpeed;
         }
 
@@ -168,13 +170,13 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			characterY = -maxSpeed;
 
         // If there is a collision, move the player where they were
-		if(isCollision(playerBox)){
-			sprite.setPosition(saveCharX, saveCharY);
+		if(isCollision(player.getPlayerBox())){
+			player.getSprite().setPosition(saveCharX, saveCharY);
 		}
 
         // Move character and camera at the same time.
-        sprite.translate(characterX, characterY);
-        camera.position.set(sprite.getX(), sprite.getY(), 0);
+        player.getSprite().translate(characterX, characterY);
+        camera.position.set(player.getSprite().getX(), player.getSprite().getY(), 0);
 
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update(); //This changes camera position
@@ -183,13 +185,14 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
         // Render below character
 		tiledMapRenderer.render(background);
 
-		// Render character
-		character.setProjectionMatrix(camera.combined);
-		character.begin();
-		sprite.draw(character);
-		character.end();
-		playerBox.setCenter(sprite.getX() + offset, sprite.getY());
+//		// Render character
+		player.getCharacter().setProjectionMatrix(camera.combined);
+//		character.begin();
+//		sprite.draw(character);
+//		character.end();
+//		playerBox.setCenter(sprite.getX() + offset, sprite.getY());
 
+		player.render();
 
         // Render over character
         tiledMapRenderer.render(overlay);
