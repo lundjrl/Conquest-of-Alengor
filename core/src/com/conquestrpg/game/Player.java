@@ -23,6 +23,7 @@ public class Player {
     private Sprite sprite;
     private Rectangle playerBox;
     private float offset = 8.0f; // pixel offset for player collision
+    private float x, y;
 
     Player(){
         // Character
@@ -57,6 +58,10 @@ public class Player {
 
     public Rectangle getPlayerBox(){
         return this.playerBox;
+    }
+
+    public void setPosition(float x, float y){
+
     }
 
 }

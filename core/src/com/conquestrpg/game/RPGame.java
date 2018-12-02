@@ -36,10 +36,17 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	TiledMap tiledMap;
 	OrthographicCamera camera;
 	TiledMapRenderer tiledMapRenderer;
+	TiledMapRenderer tiledMapRendererMain;
+	TiledMap tiledMap2;
+	TiledMapRenderer tiledMapRendererWarehouse;
 	MapLayer collisionLayer;
 	MapLayer npcLayer;
+	MapLayer playerSpawn;
+	MapLayer doorwayLayer;
 	MapObjects npcObjects;
 	MapObject npcObject;
+	MapObject loadWarehouse;
+	Rectangle doorOutWarehouse, doorInWarehouse;
 	int i = 0;
 	int frame = 0;
 
@@ -82,15 +89,39 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 		camera = new OrthographicCamera();
 		//Scale
-		camera.setToOrtho(false, (w/3), (h/3));
+		camera.setToOrtho(false, (w/3.0f), (h/3.0f));
 		camera.update();
 
-		// Map
+
+
+
+		// Maps
 		tiledMap = new TmxMapLoader().load("ConquestOfAlengor.tmx");
-		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+		tiledMapRendererMain = new OrthogonalTiledMapRenderer(tiledMap);
 		// Get collision layer
 		collisionLayer = tiledMap.getLayers().get("COLLISION_LAYER");
 		npcLayer = tiledMap.getLayers().get("NPC_LAYER");
+		doorwayLayer = tiledMap.getLayers().get("DOORWAY_LAYER");
+		doorOutWarehouse = ((RectangleMapObject)(doorwayLayer.getObjects().get("Maintownwarehouse.tmx"))).getRectangle();
+
+
+		// Doorway
+		tiledMap2 = new TmxMapLoader().load("Maintownwarehouse.tmx");
+		tiledMapRendererWarehouse = new OrthogonalTiledMapRenderer(tiledMap2);
+
+		playerSpawn = tiledMap2.getLayers().get("PLAYER_SPAWN_LAYER");
+		loadWarehouse = playerSpawn.getObjects().get("ConquestOfAlengor.tmx");
+		// Get rectangle
+		System.out.println(playerSpawn.getObjects().getCount());
+
+		doorInWarehouse = ((RectangleMapObject)loadWarehouse).getRectangle();
+
+		// Render main first
+		tiledMapRenderer = tiledMapRendererMain;
+
+
+
+
 
 		// Music
 		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Sheet.mp3"));
@@ -119,13 +150,13 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 //
 		// Set Camera position the same as the character
 
-		System.out.println(npcLayer.getObjects().getCount());
 
 		npcObject = npcLayer.getObjects().get("Fisherman6");
 		npcTest = new NPC(npcObject);
 
 		player = new Player();
 		camera.position.set(player.getSprite().getX(), player.getSprite().getY(), 0);
+
 
 	}
 
@@ -135,7 +166,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 
-		Gdx.gl.glClearColor(.5f, .5f, .5f, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(batch);
@@ -145,6 +176,34 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			saveCharX = player.getSprite().getX();
 			saveCharY = player.getSprite().getY();
 		}
+
+
+
+
+
+		// Doors
+
+		if(player.getPlayerBox().overlaps(doorOutWarehouse)){
+			tiledMapRenderer = tiledMapRendererWarehouse;
+			player.getSprite().setPosition(doorInWarehouse.getX(), doorInWarehouse.getY() + 20);
+			System.out.println("I'm here");
+		}
+
+		if(player.getPlayerBox().overlaps(doorInWarehouse)){
+			tiledMapRenderer = tiledMapRendererMain;
+			player.getSprite().setPosition(doorOutWarehouse.getX(), doorOutWarehouse.getY() - 20);
+			System.out.println("I'm here2");
+		}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -186,15 +245,17 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		}
 
         // Move character and camera at the same time.
-        player.getSprite().translate(characterX, characterY);
-        camera.position.set(player.getSprite().getX(), player.getSprite().getY(), 0);
+        player.getSprite().translate(Math.round(characterX), Math.round(characterY));
+        camera.position.set(Math.round(player.getSprite().getX()), Math.round(player.getSprite().getY()), 0);
+
 
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update(); //This changes camera position
 		tiledMapRenderer.setView(camera); //type something or whatever
 
         // Render below character
-		tiledMapRenderer.render(background);
+		//tiledMapRenderer.render(background);
+		tiledMapRenderer.render();
 
 //		// Render character
 		player.getCharacter().setProjectionMatrix(camera.combined);
@@ -208,7 +269,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		npcTest.render();
 
         // Render over character
-        tiledMapRenderer.render(overlay);
+        //tiledMapRenderer.render(overlay);
+		//camera.update();
 
 	}
 	
