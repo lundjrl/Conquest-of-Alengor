@@ -29,11 +29,14 @@ public class NPC {
     private float npcY;
     private float offset = 8.0f; // pixel offset for player collision
 
+    private float move;
+    private float i;
+
     NPC(MapObject npcObject){
         // Character
         this.npcObject = npcObject;
         character = new SpriteBatch();
-        texture = new Texture(Gdx.files.internal("Main.png"));
+        texture = new Texture(Gdx.files.internal("TrueAlengor.png"));
         sprite = new Sprite(texture);
 
 
@@ -42,14 +45,51 @@ public class NPC {
         //playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
          npcX = ((RectangleMapObject) npcObject).getRectangle().getX();
          npcY = ((RectangleMapObject) npcObject).getRectangle().getY();
-
+         System.out.println("In NPC: X AND Y: " + npcX +" "+ npcY);
+         sprite.setPosition(npcX, npcY );
+         //move = -0.3f;
 
     }
 
     public void render () {
 
+//        // Move NPC
+//        move = move -.001f;
+//
+//        if(move < -0.3f){
+//            move = .03f;
+//        }
+//
+//        sprite.translateX(move);
+//        i = i - .001f;
 
-        sprite.translate(npcX, npcY);
+//        if(i > -0.3f){
+//            i = 0.3f;
+//        }
+
+        sprite.translateX(move);
+
+        i++;
+
+        // Good for enemy movement
+//        if( i == 100){
+//            move = 0.3f;
+//            i = -100;
+//        } else if (i == 0){
+//            move = -0.3f;
+//        }
+
+        // Organic movement
+        move = move - .001f;
+
+        if(move < -0.3f){
+            move = .3f;
+        }
+
+        //System.out.println(move);
+
+
+
         // Render character
         //character.setProjectionMatrix(camera.combined);
         character.begin();

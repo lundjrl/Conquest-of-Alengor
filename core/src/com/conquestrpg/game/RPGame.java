@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
@@ -36,6 +37,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	OrthographicCamera camera;
 	TiledMapRenderer tiledMapRenderer;
 	MapLayer collisionLayer;
+	MapLayer npcLayer;
+	MapObjects npcObjects;
+	MapObject npcObject;
 	int i = 0;
 	int frame = 0;
 
@@ -47,6 +51,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	Music music;
 //	Rectangle playerBox;
 //	float offset = 8.0f; // pixel offset for player collision
+	private NPC npcTest;
 
 	// Movement
     float characterSpeed = 5.0f;
@@ -85,6 +90,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 		// Get collision layer
 		collisionLayer = tiledMap.getLayers().get("COLLISION_LAYER");
+		npcLayer = tiledMap.getLayers().get("NPC_LAYER");
 
 		// Music
 		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Sheet.mp3"));
@@ -113,6 +119,11 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 //
 		// Set Camera position the same as the character
 
+		System.out.println(npcLayer.getObjects().getCount());
+
+		npcObject = npcLayer.getObjects().get("Fisherman6");
+		npcTest = new NPC(npcObject);
+
 		player = new Player();
 		camera.position.set(player.getSprite().getX(), player.getSprite().getY(), 0);
 
@@ -124,7 +135,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(.5f, .5f, .5f, 1);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(batch);
@@ -187,12 +198,14 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 //		// Render character
 		player.getCharacter().setProjectionMatrix(camera.combined);
+		npcTest.getCharacter().setProjectionMatrix(camera.combined);
 //		character.begin();
 //		sprite.draw(character);
 //		character.end();
 //		playerBox.setCenter(sprite.getX() + offset, sprite.getY());
 
 		player.render();
+		npcTest.render();
 
         // Render over character
         tiledMapRenderer.render(overlay);
