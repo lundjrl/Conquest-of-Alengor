@@ -199,6 +199,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 
+
 		// Doors
 
 //		if(player.getPlayerBox().overlaps(doorOutWarehouse)){

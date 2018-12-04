@@ -3190,10 +3190,10 @@
  <objectgroup id="13" name="ITEM_LAYER"/>
  <objectgroup id="9" name="DOORWAY_LAYER">
   <object id="137" name="Maintownwarehouse.tmx" x="993.5" y="2737.58" width="13" height="17"/>
-  <object id="145" x="822.5" y="2737.38" width="19.875" height="16.5"/>
-  <object id="158" x="737.818" y="2593.45" width="12.5455" height="16.9091"/>
-  <object id="159" x="802.182" y="2609.64" width="12.3636" height="18.5455"/>
-  <object id="160" x="934.5" y="2610.25" width="19" height="17.5"/>
+  <object id="145" name="MaintownSWhome.tmx" x="822.5" y="2737.38" width="19.875" height="16.5"/>
+  <object id="158" name="MaintownNWhome.tmx" x="737.818" y="2593.45" width="12.5455" height="16.9091"/>
+  <object id="159" name="starthomeCOA.tmx" x="802.182" y="2609.64" width="12.3636" height="18.5455"/>
+  <object id="160" name="Maintownhall.tmx" x="934.5" y="2610.25" width="19" height="17.5"/>
   <object id="387" x="162" y="2226.5" width="43" height="49.5"/>
   <object id="544" x="2401.5" y="2865.75" width="12.75" height="16.25"/>
   <object id="626" x="2326" y="2273.75" width="20.5" height="13.75"/>
