@@ -92,6 +92,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
     // Tilemaps to load
 	private final String ConquestOfAlengor = "ConquestOfAlengor.tmx";
 	private final String Maintownwarehouse = "Maintownwarehouse.tmx";
+	private final String MaintownSWhome = "MaintownSWhome.tmx";
+	private final String MaintownNWhome = "MaintownNWhome.tmx";
+	private final String starthomeCOA = "starthomeCOA.tmx";
 
 
 	@Override
@@ -117,6 +120,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		maps = new HashMap<>();
 		maps.put(ConquestOfAlengor, new MapLoader(ConquestOfAlengor));
 		maps.put(Maintownwarehouse, new MapLoader(Maintownwarehouse));
+		maps.put(MaintownSWhome, new MapLoader(MaintownSWhome));
+		maps.put(MaintownNWhome, new MapLoader(MaintownNWhome));
+		maps.put(starthomeCOA, new MapLoader(starthomeCOA));
 
 		// Set current map to main map
 		maps.get(ConquestOfAlengor).setCurrent(true);
@@ -213,27 +219,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
         ;
 
-		if(getCurrentMap().isDoorOverlap(player.getPlayerBox())){
-			lastMapName = getCurrentMap().getCurrentMapName();
-		    stepOnDoor = getCurrentMap().getDoorRectangleObject().getName();
-		    //recPlaceHolder = getCurrentMap().getDoor();
-			setFalseMaps();
-		    maps.get(stepOnDoor).setCurrent(true);
-		    getCurrentMap().loadDoor(lastMapName);
 
-
-
-		    System.out.println("Player before: " +player.getPlayerBox().getX() + " " +player.getPlayerBox().getY());
-		    System.out.println("Current door:: "+getCurrentMap().getDoor().getX()+" " + getCurrentMap().getDoor().getY());
-
-
-		    player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
-
-			//System.out.println("Player after: " +player.getPlayerBox().getX());
-
-
-            //player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
-        }
 
 //		if(player.getPlayerBox().overlaps(getCurrentMap().getDoorOverlap())){
 //			//tiledMapRenderer = tiledMapRendererWarehouse;
@@ -297,6 +283,50 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			player.getSprite().setPosition(saveCharX, saveCharY);
 		}
 
+
+
+
+
+
+
+
+		if(getCurrentMap().isDoorOverlap(player.getPlayerBox())){
+			lastMapName = getCurrentMap().getCurrentMapName();
+			stepOnDoor = getCurrentMap().getDoorRectangleObject().getName();
+			//recPlaceHolder = getCurrentMap().getDoor();
+			setFalseMaps();
+			maps.get(stepOnDoor).setCurrent(true);
+			getCurrentMap().loadDoor(lastMapName);
+
+
+
+			System.out.println("Player before: " +player.getPlayerBox().getX() + " " +player.getPlayerBox().getY());
+			System.out.println("Current door:: "+getCurrentMap().getDoor().getX()+" " + getCurrentMap().getDoor().getY());
+
+
+
+
+			if(getCurrentMap().getCurrentMapName().equals(ConquestOfAlengor)){
+				player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() - 20);
+			} else
+				player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
+
+			//System.out.println("Player after: " +player.getPlayerBox().getX());
+
+
+			//player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
+		}
+
+
+
+
+
+
+
+
+
+
+
         // Move character and camera at the same time.
         player.getSprite().translate(Math.round(characterX), Math.round(characterY));
         camera.position.set(Math.round(player.getSprite().getX()), Math.round(player.getSprite().getY()), 0);
@@ -309,6 +339,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
         // Render below character
 		//tiledMapRenderer.render(background);
 		getCurrentMap().getTiledMapRenderer().render();
+
 
 //		// Render character
 		player.getCharacter().setProjectionMatrix(camera.combined);
@@ -324,6 +355,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
         // Render over character
         //tiledMapRenderer.render(overlay);
 		//camera.update();
+
+		//System.out.println(player.getPlayerBox().getX() +" " + player.getPlayerBox().getY());
 
 	}
 	
