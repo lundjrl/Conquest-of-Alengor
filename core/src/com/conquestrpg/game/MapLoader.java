@@ -25,6 +25,8 @@ public class MapLoader {
     private MapLayer doorwayLayer;
     private MapLayer itemLayer;
 
+    private boolean isCurrent = false;
+
 
     //Map layers
     private final String COLLISION_LAYER = "COLLISION_LAYER";
@@ -85,6 +87,21 @@ public class MapLoader {
 
     }
 
+    public boolean isCurrent() {
+        return isCurrent;
+    }
+
+    public void setCurrent(boolean is) {
+        this.isCurrent = is;
+    }
+
+    public Rectangle getDoor() {
+        return door;
+    }
+
+    public void setDoor(Rectangle door) {
+        this.door = door;
+    }
 
     public TiledMap getTiledMap() {
         return tiledMap;
