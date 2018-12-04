@@ -37,26 +37,9 @@ public class MapLoader {
 
     private String currentMapName;
 
-    //Maps
-    //private final String ConquestOfAlengor = "ConquestOfAlengor.tmx";
-
-
     // For door
-    //private float doorX;
-    //private float doorY;
     private Rectangle door;
     private RectangleMapObject doorRectangleObject;
-
-    // Save last position on map
-    private float lastPosX;
-    private float lastPosY;
-
-
-
-    // Java hashmap to store maps
- //   HashMap<String, TiledMapRenderer> saveMaps;
-
-
 
     public MapLoader(String map){
         this.currentMapName = map;
@@ -66,13 +49,6 @@ public class MapLoader {
         this.collisionLayer = tiledMap.getLayers().get("COLLISION_LAYER");
         this.npcLayer = tiledMap.getLayers().get("NPC_LAYER");
         this.doorwayLayer = tiledMap.getLayers().get("DOORWAY_LAYER");
-
-
-//        saveMaps = new HashMap<String, TiledMapRenderer>();
-//
-//        saveMaps.put(ConquestOfAlengor, tiledMapRendererMain);
-
-
 
     }
 
@@ -92,11 +68,6 @@ public class MapLoader {
             }
         }
         return null;
-    }
-
-
-    public void getMap(){
-
     }
 
     public boolean isDoorOverlap(Rectangle playerBox){
@@ -207,19 +178,4 @@ public class MapLoader {
         this.doorRectangleObject = doorRectangleObject;
     }
 
-//    public float getDoorX() {
-//        return doorX;
-//    }
-//
-//    public void setDoorX(float doorX) {
-//        this.doorX = doorX;
-//    }
-//
-//    public float getDoorY() {
-//        return doorY;
-//    }
-//
-//    public void setDoorY(float doorY) {
-//        this.doorY = doorY;
-//    }
 }

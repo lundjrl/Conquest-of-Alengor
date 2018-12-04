@@ -131,35 +131,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		// Set current map to main map
 		maps.get(ConquestOfAlengor).setCurrent(true);
 
-
-		// Maps
-//		tiledMap = new TmxMapLoader().load("ConquestOfAlengor.tmx");
-//		tiledMapRendererMain = new OrthogonalTiledMapRenderer(tiledMap);
-//		// Get collision layer
-//		collisionLayer = tiledMap.getLayers().get("COLLISION_LAYER");
-//		npcLayer = tiledMap.getLayers().get("NPC_LAYER");
-//		doorwayLayer = tiledMap.getLayers().get("DOORWAY_LAYER");
-//		doorOutWarehouse = ((RectangleMapObject)(doorwayLayer.getObjects().get("Maintownwarehouse.tmx"))).getRectangle();
-
-
-		// Doorway
-//		tiledMap2 = new TmxMapLoader().load("Maintownwarehouse.tmx");
-//		tiledMapRendererWarehouse = new OrthogonalTiledMapRenderer(tiledMap2);
-//
-//		playerSpawn = tiledMap2.getLayers().get("PLAYER_SPAWN_LAYER");
-//		loadWarehouse = playerSpawn.getObjects().get("ConquestOfAlengor.tmx");
-//		// Get rectangle
-//		System.out.println(playerSpawn.getObjects().getCount());
-//
-//		doorInWarehouse = ((RectangleMapObject)loadWarehouse).getRectangle();
-//
-//		// Render main first
-//		tiledMapRenderer = tiledMapRendererMain;
-
-
-
-
-
 		// Music
 		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Sheet.mp3"));
 		//Set this below audio to maybe a boss fight or while talking to an NPC
@@ -200,9 +171,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	@Override
 	public void render () {
 
-
-
-
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		gsm.update(Gdx.graphics.getDeltaTime());
@@ -219,24 +187,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 
-		// Doors
-
-        ;
 
 
-
-//		if(player.getPlayerBox().overlaps(getCurrentMap().getDoorOverlap())){
-//			//tiledMapRenderer = tiledMapRendererWarehouse;
-//
-//			player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
-//			System.out.println("I'm here");
-//		}
-//
-//		if(player.getPlayerBox().overlaps(doorInWarehouse)){
-//			tiledMapRenderer = tiledMapRendererMain;
-//			player.getSprite().setPosition(doorOutWarehouse.getX(), doorOutWarehouse.getY() - 20);
-//			System.out.println("I'm here2");
-//		}
 
 
 
@@ -315,10 +267,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			} else
 				player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
 
-			//System.out.println("Player after: " +player.getPlayerBox().getX());
-
-
-			//player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
 		}
 
 
@@ -361,6 +309,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		//camera.update();
 
 		//System.out.println(player.getPlayerBox().getX() +" " + player.getPlayerBox().getY());
+
 
 	}
 	
