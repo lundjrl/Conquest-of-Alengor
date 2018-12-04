@@ -24,6 +24,8 @@ public class Player {
     private Rectangle playerBox;
     private float offset = 8.0f; // pixel offset for player collision
     private float x, y;
+    private int health;
+    private int baseDamage;
 
     Player(){
         // Character
@@ -35,7 +37,8 @@ public class Player {
         // Move in multiples of 16
         sprite.translate(992, 336);
         playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
-
+        baseDamage = 15;
+        health = 200;
 
     }
 
@@ -63,5 +66,12 @@ public class Player {
     public void setPosition(float x, float y){
 
     }
+    public void setPlayerHealth(int health){
+        this.health = health;
+    }
+    public int getPlayerHealth(){
+        return this.health;
+    }
+
 
 }

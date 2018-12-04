@@ -17,7 +17,7 @@ public class MapLoader {
     MapLayer playerSpawnLayer;
     MapLayer npcLayer;
     MapLayer doorwayLayer;
-    MapLayer 
+    MapLayer itemLayer;
 
 
     //Map layers

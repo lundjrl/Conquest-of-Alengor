@@ -20,17 +20,17 @@ import com.badlogic.gdx.utils.Array;
 public class NPC {
 
     // Player
-    private SpriteBatch character;
-    private Texture texture;
-    private Sprite sprite;
-    private Rectangle playerBox;
-    private MapObject npcObject;
-    private float npcX;
-    private float npcY;
-    private float offset = 8.0f; // pixel offset for player collision
+    protected SpriteBatch character;
+    protected Texture texture;
+    protected Sprite sprite;
+    protected Rectangle playerBox;
+    protected MapObject npcObject;
+    protected float npcX;
+    protected float npcY;
+    protected float offset = 8.0f; // pixel offset for player collision
 
-    private float move;
-    private float i;
+    protected float move;
+    protected float i;
 
     NPC(MapObject npcObject){
         // Character
@@ -45,7 +45,7 @@ public class NPC {
         //playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
          npcX = ((RectangleMapObject) npcObject).getRectangle().getX();
          npcY = ((RectangleMapObject) npcObject).getRectangle().getY();
-         System.out.println("In NPC: X AND Y: " + npcX +" "+ npcY);
+         //System.out.println("In NPC: X AND Y: " + npcX +" "+ npcY);
          sprite.setPosition(npcX, npcY );
          //move = -0.3f;
 

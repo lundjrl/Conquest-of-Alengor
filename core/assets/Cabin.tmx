@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextobjectid="1">
+<map version="1.1" tiledversion="2018.09.12" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="50">
  <tileset firstgid="1" source="rrrroguelikeSheet_transparent.tsx"/>
- <layer name="ground" width="50" height="50">
+ <layer id="1" name="ground" width="50" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -55,7 +55,56 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer name="WALL" width="50" height="50">
+ <objectgroup id="7" name="COLLISION_LAYER">
+  <object id="1" x="288.333" y="431.333" width="270.667" height="16.3333"/>
+  <object id="2" x="384" y="304.333" width="15.3333" height="129.333"/>
+  <object id="3" x="448.333" y="305" width="15.6667" height="128.667"/>
+  <object id="4" x="480.333" y="319.667" width="64.3333" height="47"/>
+  <object id="5" x="543.667" y="208" width="15" height="228"/>
+  <object id="8" x="528.333" y="375" width="13.6667" height="6.33333"/>
+  <object id="10" x="517.667" y="420.333" width="19.6667" height="12"/>
+  <object id="15" x="404" y="375.667" width="7.66667" height="8.33333"/>
+  <object id="18" x="287.667" y="208" width="15" height="225"/>
+  <object id="19" x="303" y="320" width="64" height="45.3333"/>
+  <object id="20" x="308" y="279" width="57" height="8.33333"/>
+  <object id="21" x="483.667" y="311" width="7" height="7.66667"/>
+  <object id="22" x="515.667" y="295.333" width="7.66667" height="7.66667"/>
+  <object id="23" x="531" y="278.667" width="8.33333" height="5.66667"/>
+  <object id="25" x="530.333" y="276.333" width="9.66667" height="9.66667"/>
+  <object id="27" x="516.333" y="296.667" width="6.33333" height="6"/>
+  <object id="28" x="484.667" y="313" width="5" height="5"/>
+  <object id="31" x="303.333" y="238.667" width="241" height="15.3333"/>
+ </objectgroup>
+ <objectgroup id="8" name="ITEM_LAYER">
+  <object id="6" x="496.333" y="365.667" width="15" height="4"/>
+  <object id="7" x="511.667" y="364.667" width="16" height="5"/>
+  <object id="9" x="526.333" y="374" width="17.6667" height="8.66667"/>
+  <object id="12" x="516.333" y="418.333" width="22" height="14.3333"/>
+  <object id="16" x="402" y="373" width="11.3333" height="12.3333"/>
+  <object id="26" x="528" y="275.667" width="14" height="11.6667"/>
+  <object id="29" x="515.333" y="295.333" width="8" height="7.66667"/>
+  <object id="30" x="482.667" y="310.333" width="9" height="8.66667"/>
+  <object id="32" x="497.333" y="254" width="13.3333" height="4"/>
+  <object id="33" x="513.333" y="254.333" width="14.6667" height="4"/>
+  <object id="34" x="528.667" y="253.333" width="14" height="4.66667"/>
+  <object id="35" x="466.333" y="254.667" width="11.3333" height="3.66667"/>
+  <object id="36" x="433.667" y="255" width="12.6667" height="4"/>
+  <object id="37" x="481.667" y="256" width="11.6667" height="2.66667"/>
+  <object id="38" x="401.667" y="256" width="12.6667" height="2.66667"/>
+  <object id="39" x="370.667" y="256.333" width="10.3333" height="3"/>
+  <object id="40" x="354.667" y="255.667" width="10.3333" height="3.33333"/>
+  <object id="41" x="310.333" y="255" width="18.3333" height="3"/>
+  <object id="42" x="304.667" y="367.333" width="14.6667" height="3"/>
+  <object id="45" x="320" y="367.333" width="15.3333" height="3.66667"/>
+  <object id="46" x="335.667" y="366.667" width="16.3333" height="4"/>
+  <object id="47" x="352.333" y="367" width="14.6667" height="4.33333"/>
+ </objectgroup>
+ <objectgroup id="9" name="PLAYER_SPAWN_LAYER"/>
+ <objectgroup id="10" name="NPC_SPAWN_LAYER"/>
+ <objectgroup id="11" name="DOORWAY_LAYER">
+  <object id="49" name="ConquestOfAlengor.tmx" x="399.667" y="429" width="48.6667" height="3.33333"/>
+ </objectgroup>
+ <layer id="2" name="WALL" width="50" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -109,7 +158,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer name="top wall" width="50" height="50">
+ <layer id="3" name="top wall" width="50" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -163,7 +212,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer name="Paths" width="50" height="50">
+ <layer id="4" name="Paths" width="50" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -217,7 +266,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer name="Doors" width="50" height="50">
+ <layer id="5" name="Doors" width="50" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -271,7 +320,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer name="Decoration" width="50" height="50">
+ <layer id="6" name="Decoration" width="50" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
