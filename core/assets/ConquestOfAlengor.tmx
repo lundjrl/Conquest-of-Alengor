@@ -3204,7 +3204,7 @@
   <object id="626" x="2326" y="2273.75" width="20.5" height="13.75"/>
   <object id="1320" x="1319" y="802" width="18.6667" height="16"/>
   <object id="1495" x="369.333" y="897.667" width="13.3333" height="16"/>
-  <object id="1679" x="1857.25" y="2193.25" width="13.5" height="15.25"/>
+  <object id="1679" name="Mansion.tmx" x="1857.25" y="2193.25" width="13.5" height="15.25"/>
   <object id="1680" x="1926.13" y="1872.88" width="20.25" height="16.375"/>
   <object id="1681" x="1985.25" y="1792.88" width="13.375" height="17.625"/>
   <object id="1682" x="1905.38" y="1761.25" width="13" height="15.875"/>
