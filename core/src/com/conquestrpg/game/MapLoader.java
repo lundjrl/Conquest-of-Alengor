@@ -35,10 +35,21 @@ public class MapLoader {
     private final String PLAYER_SPAWN_LAYER = "PLAYER_SPAWN_LAYER";
     private final String DOORWAY_LAYER = "DOORWAY_LAYER";
 
+    private String currentMapName;
+
     //Maps
     //private final String ConquestOfAlengor = "ConquestOfAlengor.tmx";
 
+
+    // For door
+    //private float doorX;
+    //private float doorY;
     private Rectangle door;
+    private RectangleMapObject doorRectangleObject;
+
+    // Save last position on map
+    private float lastPosX;
+    private float lastPosY;
 
 
 
@@ -48,6 +59,7 @@ public class MapLoader {
 
 
     public MapLoader(String map){
+        this.currentMapName = map;
         this.tiledMap = new TmxMapLoader().load(map);
         this.tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         // Get collision layer
@@ -65,7 +77,7 @@ public class MapLoader {
     }
 
     public  void loadDoor(String doorString){
-        this.door = ((RectangleMapObject)(doorwayLayer.getObjects().get("Maintownwarehouse.tmx"))).getRectangle();
+        this.door = ((RectangleMapObject)(doorwayLayer.getObjects().get(doorString))).getRectangle();
     }
 
     public String isDoor(Rectangle playerBox){
@@ -87,6 +99,25 @@ public class MapLoader {
 
     }
 
+    public boolean isDoorOverlap(Rectangle playerBox){
+        Rectangle rec = null;
+
+        for(MapObject object: doorwayLayer.getObjects()){
+            if(object instanceof RectangleMapObject){
+                rec = ((RectangleMapObject)object).getRectangle();
+                if(playerBox.overlaps(rec)){
+                    this.door = rec;
+                    //this.doorX = rec.getX();
+                    //this.doorY = rec.getY();
+                    this.doorRectangleObject = (RectangleMapObject)object;
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public boolean isCurrent() {
         return isCurrent;
     }
@@ -96,8 +127,9 @@ public class MapLoader {
     }
 
     public Rectangle getDoor() {
-        return door;
+        return this.door;
     }
+
 
     public void setDoor(Rectangle door) {
         this.door = door;
@@ -158,4 +190,36 @@ public class MapLoader {
     public void setItemLayer(MapLayer itemLayer) {
         this.itemLayer = itemLayer;
     }
+
+    public String getCurrentMapName() {
+        return currentMapName;
+    }
+
+    public void setCurrentMapName(String currentMapName) {
+        this.currentMapName = currentMapName;
+    }
+
+    public RectangleMapObject getDoorRectangleObject() {
+        return doorRectangleObject;
+    }
+
+    public void setDoorRectangleObject(RectangleMapObject doorRectangleObject) {
+        this.doorRectangleObject = doorRectangleObject;
+    }
+
+//    public float getDoorX() {
+//        return doorX;
+//    }
+//
+//    public void setDoorX(float doorX) {
+//        this.doorX = doorX;
+//    }
+//
+//    public float getDoorY() {
+//        return doorY;
+//    }
+//
+//    public void setDoorY(float doorY) {
+//        this.doorY = doorY;
+//    }
 }

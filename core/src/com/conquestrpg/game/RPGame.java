@@ -36,25 +36,34 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public SpriteBatch batch;
 
 	// Maps
-	TiledMap tiledMap;
+//	TiledMap tiledMap;
 	OrthographicCamera camera;
-	TiledMapRenderer tiledMapRenderer;
-	TiledMapRenderer tiledMapRendererMain;
-	TiledMap tiledMap2;
-	TiledMapRenderer tiledMapRendererWarehouse;
-	MapLayer collisionLayer;
-	MapLayer npcLayer;
-	MapLayer playerSpawn;
-	MapLayer doorwayLayer;
-	MapObjects npcObjects;
+//	TiledMapRenderer tiledMapRenderer;
+//	TiledMapRenderer tiledMapRendererMain;
+//	TiledMap tiledMap2;
+//	TiledMapRenderer tiledMapRendererWarehouse;
+//	MapLayer collisionLayer;
+//	MapLayer npcLayer;
+//	MapLayer playerSpawn;
+//	MapLayer doorwayLayer;
+//	MapObjects npcObjects;
 	MapObject npcObject;
-	MapObject loadWarehouse;
-	Rectangle doorOutWarehouse, doorInWarehouse;
-	int i = 0;
-	int frame = 0;
+//	MapObject loadWarehouse;
+//	Rectangle doorOutWarehouse, doorInWarehouse;
+//	int i = 0;
+//	int frame = 0;
 
 	// Loaded maps in ArrayList
 	HashMap<String, MapLoader> maps;
+
+	// String to hold door if player overlaps
+    private String stepOnDoor;
+
+    // Rectangle placeholder
+	private Rectangle recPlaceHolder;
+
+	// Hold last map name
+	private String lastMapName;
 
 
 	// Player
@@ -105,7 +114,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 		// MapLoader class
-		maps = new HashMap<String, MapLoader>();
+		maps = new HashMap<>();
 		maps.put(ConquestOfAlengor, new MapLoader(ConquestOfAlengor));
 		maps.put(Maintownwarehouse, new MapLoader(Maintownwarehouse));
 
@@ -202,9 +211,34 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 		// Doors
 
-//		if(player.getPlayerBox().overlaps(doorOutWarehouse)){
-//			tiledMapRenderer = tiledMapRendererWarehouse;
-//			player.getSprite().setPosition(doorInWarehouse.getX(), doorInWarehouse.getY() + 20);
+        ;
+
+		if(getCurrentMap().isDoorOverlap(player.getPlayerBox())){
+			lastMapName = getCurrentMap().getCurrentMapName();
+		    stepOnDoor = getCurrentMap().getDoorRectangleObject().getName();
+		    //recPlaceHolder = getCurrentMap().getDoor();
+			setFalseMaps();
+		    maps.get(stepOnDoor).setCurrent(true);
+		    getCurrentMap().loadDoor(lastMapName);
+
+
+
+		    System.out.println("Player before: " +player.getPlayerBox().getX() + " " +player.getPlayerBox().getY());
+		    System.out.println("Current door:: "+getCurrentMap().getDoor().getX()+" " + getCurrentMap().getDoor().getY());
+
+
+		    player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
+
+			//System.out.println("Player after: " +player.getPlayerBox().getX());
+
+
+            //player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
+        }
+
+//		if(player.getPlayerBox().overlaps(getCurrentMap().getDoorOverlap())){
+//			//tiledMapRenderer = tiledMapRendererWarehouse;
+//
+//			player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
 //			System.out.println("I'm here");
 //		}
 //

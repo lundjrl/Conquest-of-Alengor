@@ -61,7 +61,7 @@ public class Player {
     }
 
     public void setPosition(float x, float y){
-
+        this.sprite.setPosition(x,y);
     }
 
 }
