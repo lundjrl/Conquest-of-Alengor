@@ -1,0 +1,39 @@
+Index: desktop/src/com/conquestrpg/game/desktop/DesktopLauncher.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- desktop/src/com/conquestrpg/game/desktop/DesktopLauncher.java	(revision e0cc44d544c4da77d93b7a129fd68b1ffe687d89)
++++ desktop/src/com/conquestrpg/game/desktop/DesktopLauncher.java	(date 1541443226189)
+@@ -13,8 +13,8 @@
+ 		// Setup Configuration
+ 		config.title = "Conquest of Alengor"; // Title on window
+ 		config.useGL30 = false; // Use OpenGL 2.0
+-		config.width = 800;
+-		config.height = 600;
++		config.width = 1000;
++		config.height = 800;
+ 
+ 		// Setup application
+ 		Application app = new LwjglApplication(new RPGame(), config);
+Index: core/src/com/conquestrpg/game/RPGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/src/com/conquestrpg/game/RPGame.java	(revision e0cc44d544c4da77d93b7a129fd68b1ffe687d89)
++++ core/src/com/conquestrpg/game/RPGame.java	(date 1541444022483)
+@@ -27,10 +27,12 @@
+ 		float h = Gdx.graphics.getHeight();
+ 
+ 		camera = new OrthographicCamera();
+-		camera.setToOrtho(false, (w/2), (h/2));
++		camera.setToOrtho(false, (w/3), (h/3));
+ 		camera.update();
+ 		tiledMap = new TmxMapLoader().load("ConquestOfAlengor.tmx");
+ 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
++		camera.translate(800, 270);
++
+ 
+ 		Gdx.input.setInputProcessor(this);
+ 
