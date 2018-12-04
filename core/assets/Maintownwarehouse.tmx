@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="23">
+<map version="1.1" tiledversion="2018.09.12" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="24">
  <tileset firstgid="1" source="rrrroguelikeSheet_transparent.tsx"/>
  <layer id="1" name="ground" width="50" height="50">
   <data encoding="csv">
@@ -346,9 +346,9 @@
   <object id="21" x="350.667" y="446.667" width="17.3333" height="17.3333"/>
   <object id="22" x="393.333" y="421" width="18.6667" height="26.6667"/>
  </objectgroup>
- <objectgroup id="7" name="PLAYER_SPAWN_LAYER">
-  <object id="1" name="ConquestOfAlengor.tmx" x="416.5" y="516.5" width="47.5" height="11"/>
- </objectgroup>
+ <objectgroup id="7" name="PLAYER_SPAWN_LAYER"/>
  <objectgroup id="11" name="ITEM_LAYER"/>
- <objectgroup id="8" name="DOORWAY_LAYER"/>
+ <objectgroup id="8" name="DOORWAY_LAYER">
+  <object id="23" name="ConquestOfAlengor.tmx" x="415.5" y="511.5" width="48.5" height="16"/>
+ </objectgroup>
 </map>
