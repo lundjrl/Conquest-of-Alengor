@@ -24,6 +24,8 @@ import com.conquestrpg.game.States.GameStateManager;
 import com.conquestrpg.game.States.MenuState;
 import com.conquestrpg.game.Screens.TitleScreen;
 
+import java.util.ArrayList;
+
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	//public static final int WIDTH = 800;
@@ -49,6 +51,10 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	Rectangle doorOutWarehouse, doorInWarehouse;
 	int i = 0;
 	int frame = 0;
+
+	// Loaded maps in ArrayList
+	ArrayList<MapLoader> maps;
+
 
 	// Player
 	private Player player;
@@ -304,6 +310,11 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		}
 
 		return false;
+	}
+
+	// Get current map that player is on
+	private TiledMapRenderer getCurrentMap(){
+
 	}
 
 	@Override
