@@ -95,6 +95,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	private final String MaintownSWhome = "MaintownSWhome.tmx";
 	private final String MaintownNWhome = "MaintownNWhome.tmx";
 	private final String starthomeCOA = "starthomeCOA.tmx";
+	private final String Maintownhall = "Maintownhall.tmx";
 
 
 	@Override
@@ -123,6 +124,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		maps.put(MaintownSWhome, new MapLoader(MaintownSWhome));
 		maps.put(MaintownNWhome, new MapLoader(MaintownNWhome));
 		maps.put(starthomeCOA, new MapLoader(starthomeCOA));
+		maps.put(Maintownhall, new MapLoader(Maintownhall));
 
 		// Set current map to main map
 		maps.get(ConquestOfAlengor).setCurrent(true);
