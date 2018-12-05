@@ -1,8 +1,6 @@
 package com.conquestrpg.game;
 
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -20,15 +18,14 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.conquestrpg.game.Screens.TitleScreen;
 import com.conquestrpg.game.States.GameStateManager;
 import com.conquestrpg.game.States.MenuState;
-import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.conquestrpg.game.Screens.TitleScreen;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
@@ -39,22 +36,35 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public SpriteBatch batch;
 
 	// Maps
-	TiledMap tiledMap;
-	public OrthographicCamera camera;
-	TiledMapRenderer tiledMapRenderer;
-	TiledMapRenderer tiledMapRendererMain;
-	TiledMap tiledMap2;
-	TiledMapRenderer tiledMapRendererWarehouse;
-	MapLayer collisionLayer;
-	MapLayer npcLayer;
-	MapLayer playerSpawn;
-	MapLayer doorwayLayer;
-	MapObjects npcObjects;
+//	TiledMap tiledMap;
+	OrthographicCamera camera;
+//	TiledMapRenderer tiledMapRenderer;
+//	TiledMapRenderer tiledMapRendererMain;
+//	TiledMap tiledMap2;
+//	TiledMapRenderer tiledMapRendererWarehouse;
+//	MapLayer collisionLayer;
+//	MapLayer npcLayer;
+//	MapLayer playerSpawn;
+//	MapLayer doorwayLayer;
+//	MapObjects npcObjects;
 	MapObject npcObject;
-	MapObject loadWarehouse;
-	Rectangle doorOutWarehouse, doorInWarehouse;
-	int i = 0;
-	int frame = 0;
+//	MapObject loadWarehouse;
+//	Rectangle doorOutWarehouse, doorInWarehouse;
+//	int i = 0;
+//	int frame = 0;
+
+	// Loaded maps in ArrayList
+	HashMap<String, MapLoader> maps;
+
+	// String to hold door if player overlaps
+    private String stepOnDoor;
+
+    // Rectangle placeholder
+	private Rectangle recPlaceHolder;
+
+	// Hold last map name
+	private String lastMapName;
+
 
 	// Player
 	private Player player;
@@ -79,6 +89,15 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
     int[] background = {0,1,2,3,4,6,7};
     int[] overlay = {5};
 
+    // Tilemaps to load
+	private final String ConquestOfAlengor = "ConquestOfAlengor.tmx";
+	private final String Maintownwarehouse = "Maintownwarehouse.tmx";
+	private final String MaintownSWhome = "MaintownSWhome.tmx";
+	private final String MaintownNWhome = "MaintownNWhome.tmx";
+	private final String starthomeCOA = "starthomeCOA.tmx";
+	private final String Maintownhall = "Maintownhall.tmx";
+	private final String Mansion = "Mansion.tmx";
+
 
 	@Override
 	public void create () {
@@ -88,49 +107,29 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		gsm.push(new MenuState(gsm));
 
-//		((com.badlogic.gdx.Game) Gdx.app.getApplicationListener()).setScreen(new TitleScreen(this));
-
+		//this.setScreen(new TitleScreen(this));
 
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 
 		camera = new OrthographicCamera();
-
 		//Scale
 		camera.setToOrtho(false, (w/3.0f), (h/3.0f));
 		camera.update();
 
 
+		// MapLoader class
+		maps = new HashMap<String, MapLoader>();
+		maps.put(ConquestOfAlengor, new MapLoader(ConquestOfAlengor));
+		maps.put(Maintownwarehouse, new MapLoader(Maintownwarehouse));
+		maps.put(MaintownSWhome, new MapLoader(MaintownSWhome));
+		maps.put(MaintownNWhome, new MapLoader(MaintownNWhome));
+		maps.put(starthomeCOA, new MapLoader(starthomeCOA));
+		maps.put(Maintownhall, new MapLoader(Maintownhall));
+		maps.put(Mansion, new MapLoader(Mansion));
 
-
-
-		// Maps
-		tiledMap = new TmxMapLoader().load("ConquestOfAlengor.tmx");
-		tiledMapRendererMain = new OrthogonalTiledMapRenderer(tiledMap);
-		// Get collision layer
-		collisionLayer = tiledMap.getLayers().get("COLLISION_LAYER");
-		npcLayer = tiledMap.getLayers().get("NPC_LAYER");
-		doorwayLayer = tiledMap.getLayers().get("DOORWAY_LAYER");
-		doorOutWarehouse = ((RectangleMapObject)(doorwayLayer.getObjects().get("Maintownwarehouse.tmx"))).getRectangle();
-
-
-		// Doorway
-		tiledMap2 = new TmxMapLoader().load("Maintownwarehouse.tmx");
-		tiledMapRendererWarehouse = new OrthogonalTiledMapRenderer(tiledMap2);
-
-		playerSpawn = tiledMap2.getLayers().get("PLAYER_SPAWN_LAYER");
-		loadWarehouse = playerSpawn.getObjects().get("ConquestOfAlengor.tmx");
-		// Get rectangle
-		System.out.println(playerSpawn.getObjects().getCount());
-
-		doorInWarehouse = ((RectangleMapObject)loadWarehouse).getRectangle();
-
-		// Render main first
-		tiledMapRenderer = tiledMapRendererMain;
-
-
-
-
+		// Set current map to main map
+		maps.get(ConquestOfAlengor).setCurrent(true);
 
 		// Music
 		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Sheet.mp3"));
@@ -160,22 +159,17 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		// Set Camera position the same as the character
 
 
-		npcObject = npcLayer.getObjects().get("Fisherman6");
+		npcObject = maps.get(ConquestOfAlengor).getNpcLayer().getObjects().get("Fisherman6");
 		npcTest = new NPC(npcObject);
 
 		player = new Player();
-
 		camera.position.set(player.getSprite().getX(), player.getSprite().getY(), 0);
-
 
 
 	}
 
 	@Override
 	public void render () {
-
-
-
 
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
@@ -192,19 +186,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 
-		// Doors
 
-		if(player.getPlayerBox().overlaps(doorOutWarehouse)){
-			tiledMapRenderer = tiledMapRendererWarehouse;
-			player.getSprite().setPosition(doorInWarehouse.getX(), doorInWarehouse.getY() + 20);
-			System.out.println("I'm here");
-		}
 
-		if(player.getPlayerBox().overlaps(doorInWarehouse)){
-			tiledMapRenderer = tiledMapRendererMain;
-			player.getSprite().setPosition(doorOutWarehouse.getX(), doorOutWarehouse.getY() - 20);
-			System.out.println("I'm here2");
-		}
+
 
 
 
@@ -255,6 +239,46 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			player.getSprite().setPosition(saveCharX, saveCharY);
 		}
 
+
+
+
+
+
+
+
+		if(getCurrentMap().isDoorOverlap(player.getPlayerBox())){
+			lastMapName = getCurrentMap().getCurrentMapName();
+			stepOnDoor = getCurrentMap().getDoorRectangleObject().getName();
+			//recPlaceHolder = getCurrentMap().getDoor();
+			setFalseMaps();
+			maps.get(stepOnDoor).setCurrent(true);
+			getCurrentMap().loadDoor(lastMapName);
+
+
+
+			System.out.println("Player before: " +player.getPlayerBox().getX() + " " +player.getPlayerBox().getY());
+			System.out.println("Current door:: "+getCurrentMap().getDoor().getX()+" " + getCurrentMap().getDoor().getY());
+
+
+
+
+			if(getCurrentMap().getCurrentMapName().equals(ConquestOfAlengor)){
+				player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() - 20);
+			} else
+				player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
+
+		}
+
+
+
+
+
+
+
+
+
+
+
         // Move character and camera at the same time.
         player.getSprite().translate(Math.round(characterX), Math.round(characterY));
         camera.position.set(Math.round(player.getSprite().getX()), Math.round(player.getSprite().getY()), 0);
@@ -262,11 +286,11 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update(); //This changes camera position
-		tiledMapRenderer.setView(camera); //type something or whatever
+		getCurrentMap().getTiledMapRenderer().setView(camera); //type something or whatever
 
         // Render below character
 		//tiledMapRenderer.render(background);
-		tiledMapRenderer.render();
+		getCurrentMap().getTiledMapRenderer().render();
 
 
 //		// Render character
@@ -279,13 +303,13 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 		player.render();
 		npcTest.render();
-		if (screen != null) screen.render(Gdx.graphics.getDeltaTime());
-		this.setScreen(new TitleScreen(this));
 
-
-		// Render over character
+        // Render over character
         //tiledMapRenderer.render(overlay);
 		//camera.update();
+
+		//System.out.println(player.getPlayerBox().getX() +" " + player.getPlayerBox().getY());
+
 
 	}
 	
@@ -293,7 +317,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public void dispose(){
 		super.dispose();
 		music.dispose();
-		if (screen != null) screen.hide();
 		//batch.dispose();
 		//img.dispose();
 
@@ -305,7 +328,13 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	// Collision method
 	private boolean isCollision(Rectangle playerBox){
-		MapLayer testCollision = collisionLayer;
+		MapLayer testCollision = null;
+		try {
+			testCollision = getCurrentMap().getCollisionLayer();
+		}
+		catch (NullPointerException e){
+			System.out.println("Collision layer can't load: " + e);
+		}
 		Rectangle rec = null;
 
 		for(MapObject object: testCollision.getObjects()){
@@ -320,6 +349,25 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		}
 
 		return false;
+	}
+
+	// Get current map that player is on
+	private MapLoader getCurrentMap(){
+		for(HashMap.Entry<String, MapLoader> entry : maps.entrySet()){
+			String key = entry.getKey();
+			if(maps.get(key).isCurrent()){
+				return maps.get(key);
+			};
+		}
+		return null;
+	}
+
+	// Set to false all maps when loading
+	private void setFalseMaps(){
+		for(HashMap.Entry<String, MapLoader> entry : maps.entrySet()){
+			String key = entry.getKey();
+			maps.get(key).setCurrent(false);
+		}
 	}
 
 	@Override
@@ -345,13 +393,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			characterX = 0.0f;
 			characterY = 0.0f;
 		}
-		//if(keycode == Input.Keys.DPAD_LEFT){
-		//	characterX = 0.0f;
-		//	characterY = 0.0f;
-		//}
 
-		// Move camera into position
-		//camera.position.set(sprite.getX(), sprite.getY(), 0);
 		return false;
 	}
 
@@ -386,18 +428,5 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public boolean scrolled(int amount) {
 		return false;
 	}
-
-	protected Screen screen;
-
-
-	public void setScreen (Screen screen) {
-		if (this.screen != null) this.screen.hide();
-		this.screen = screen;
-		if (this.screen != null) {
-			this.screen.show();
-			this.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		}
-	}
-
 
 }
