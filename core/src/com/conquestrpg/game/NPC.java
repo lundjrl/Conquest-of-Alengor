@@ -61,7 +61,7 @@ public class NPC {
      * @param npcObject
      * @param image
      */
-    NPC(MapObject npcObject, String image){
+    public NPC(MapObject npcObject, String image){
         // Character
         this.npcObject = npcObject;
         character = new SpriteBatch();

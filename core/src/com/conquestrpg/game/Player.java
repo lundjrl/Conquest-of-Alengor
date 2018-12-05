@@ -45,7 +45,7 @@ public class Player {
      * The Player constructor sets up with a main .png to load
      * and to render later on.
      */
-    Player(){
+    public Player(){
         // Character
         character = new SpriteBatch();
         // Load .png file
