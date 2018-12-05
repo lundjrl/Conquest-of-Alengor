@@ -1,6 +1,8 @@
 package com.conquestrpg.game;
 
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -18,11 +20,15 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.conquestrpg.game.Screens.TitleScreen;
 import com.conquestrpg.game.States.GameStateManager;
 import com.conquestrpg.game.States.MenuState;
-import com.conquestrpg.game.Screens.TitleScreen;
+import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
@@ -34,7 +40,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	// Maps
 	TiledMap tiledMap;
-	OrthographicCamera camera;
+	public OrthographicCamera camera;
 	TiledMapRenderer tiledMapRenderer;
 	TiledMapRenderer tiledMapRendererMain;
 	TiledMap tiledMap2;
@@ -82,15 +88,18 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		gsm.push(new MenuState(gsm));
 
-		//this.setScreen(new TitleScreen(this));
+//		((com.badlogic.gdx.Game) Gdx.app.getApplicationListener()).setScreen(new TitleScreen(this));
+
 
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 
 		camera = new OrthographicCamera();
+
 		//Scale
 		camera.setToOrtho(false, (w/3.0f), (h/3.0f));
 		camera.update();
+
 
 
 
@@ -155,7 +164,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		npcTest = new NPC(npcObject);
 
 		player = new Player();
+
 		camera.position.set(player.getSprite().getX(), player.getSprite().getY(), 0);
+
 
 
 	}
@@ -257,6 +268,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		//tiledMapRenderer.render(background);
 		tiledMapRenderer.render();
 
+
 //		// Render character
 		player.getCharacter().setProjectionMatrix(camera.combined);
 		npcTest.getCharacter().setProjectionMatrix(camera.combined);
@@ -267,8 +279,11 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 		player.render();
 		npcTest.render();
+		if (screen != null) screen.render(Gdx.graphics.getDeltaTime());
+		this.setScreen(new TitleScreen(this));
 
-        // Render over character
+
+		// Render over character
         //tiledMapRenderer.render(overlay);
 		//camera.update();
 
@@ -278,6 +293,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public void dispose(){
 		super.dispose();
 		music.dispose();
+		if (screen != null) screen.hide();
 		//batch.dispose();
 		//img.dispose();
 
@@ -370,5 +386,18 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public boolean scrolled(int amount) {
 		return false;
 	}
+
+	protected Screen screen;
+
+
+	public void setScreen (Screen screen) {
+		if (this.screen != null) this.screen.hide();
+		this.screen = screen;
+		if (this.screen != null) {
+			this.screen.show();
+			this.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		}
+	}
+
 
 }
