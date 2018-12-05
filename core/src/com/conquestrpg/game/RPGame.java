@@ -234,7 +234,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	 * Method for collision detection. Player will bounce back if hit into a collision layer.
 	 * @param playerBox
 	 */
-	private boolean isCollision(Rectangle playerBox){
+	protected boolean isCollision(Rectangle playerBox){
 		MapLayer testCollision = null;
 		// Error handling for player walking into a collision layer
 		try {
@@ -394,7 +394,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	 * Accessor for the current map that the player is on.
 	 * @return null
 	 */
-	private MapLoader getCurrentMap(){
+	protected MapLoader getCurrentMap(){
 		// Loops through all the maps and determines which one the player is located on.
 		for(HashMap.Entry<String, MapLoader> entry : maps.entrySet()){
 			String key = entry.getKey();
