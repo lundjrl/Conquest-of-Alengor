@@ -35,6 +35,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	private GameStateManager gsm;
 	public SpriteBatch batch;
 
+	private float width;
+	private float height;
+
 	// Maps
 //	TiledMap tiledMap;
 	OrthographicCamera camera;
@@ -110,12 +113,12 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 		//this.setScreen(new TitleScreen(this));
 
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
+		width = Gdx.graphics.getWidth();
+		height = Gdx.graphics.getHeight();
 
 		camera = new OrthographicCamera();
 		//Scale
-		camera.setToOrtho(false, (w), (h));
+		camera.setToOrtho(false, (width * 1.5f), (height * 1.5f));
 		camera.update();
 
 
@@ -172,14 +175,18 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		npcObject = maps.get(ConquestOfAlengor).getNpcLayer().getObjects().get("Fisherman6");
 		npcTest = new NPC(npcObject);
 
+//		getCurrentMap().getTiledMapRenderer().setView(camera);
+//		getCurrentMap().getTiledMapRenderer().render();
+
+
 		// Create player and start at spawn
 		player = new Player();
 		Rectangle starter = ((RectangleMapObject)getCurrentMap().getPlayerSpawnLayer().getObjects().get("spawn")).getRectangle();
 		float startX = starter.getX();
 		float startY = starter.getY();
 
-		System.out.println("Start X and Y: "+ startX+" "+startY);
 
+		player.setPosition(startX, startY);
 		player.getPlayerBox().set(startX, startY,16.0f, 0.5f);
 		camera.position.set(player.getSprite().getX(), player.getSprite().getY(), 0);
 
@@ -193,6 +200,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(batch);
+
+
 
 		// Save position before collision occurs
 		if(!isCollision(player.getPlayerBox())) {
@@ -267,23 +276,34 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		if(getCurrentMap().isDoorOverlap(player.getPlayerBox())){
 			lastMapName = getCurrentMap().getCurrentMapName();
 			stepOnDoor = getCurrentMap().getDoorRectangleObject().getName();
-			//recPlaceHolder = getCurrentMap().getDoor();
-			setFalseMaps();
-			maps.get(stepOnDoor).setCurrent(true);
-			getCurrentMap().loadDoor(lastMapName);
+			if(!stepOnDoor.equals(MainTitle)){
+				//recPlaceHolder = getCurrentMap().getDoor();
+				setFalseMaps();
+				maps.get(stepOnDoor).setCurrent(true);
+				getCurrentMap().loadDoor(lastMapName);
+
+				if(lastMapName.equals(MainTitle)){
+					// Change camera scaling after main screen
+					camera.setToOrtho(false, (width/3), (height/3));
+
+				}
+
+				System.out.println("Player before: " +player.getPlayerBox().getX() + " " +player.getPlayerBox().getY());
+				System.out.println("Current door:: "+getCurrentMap().getDoor().getX()+" " + getCurrentMap().getDoor().getY());
 
 
 
-			System.out.println("Player before: " +player.getPlayerBox().getX() + " " +player.getPlayerBox().getY());
-			System.out.println("Current door:: "+getCurrentMap().getDoor().getX()+" " + getCurrentMap().getDoor().getY());
 
+				if(getCurrentMap().getCurrentMapName().equals(ConquestOfAlengor)){
+					player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() - 20);
+//				player.getPlayerBox().setX(getCurrentMap().getDoor().getX());
+//				player.getPlayerBox().setX(getCurrentMap().getDoor().getY());
+				} else
+					player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
 
+				System.out.println("Player after: " +player.getPlayerBox().getX() + " " +player.getPlayerBox().getY());
+			}
 
-
-			if(getCurrentMap().getCurrentMapName().equals(ConquestOfAlengor)){
-				player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() - 20);
-			} else
-				player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
 
 		}
 
