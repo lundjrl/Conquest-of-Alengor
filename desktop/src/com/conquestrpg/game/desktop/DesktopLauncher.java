@@ -7,6 +7,14 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.conquestrpg.game.RPGame;
 import com.conquestrpg.game.Screens.TitleScreen;
 
+/**
+ * This DesktopLauncher launches the RPGame. See RPGame for documentation
+ * on the RPGame class. The DesktopLauncher makes a light weight game
+ * library application and sets the window name and window width and height.
+ * @author James Lund, Zachary Thomas, Matthew Doan, Aaron Brinkerhoff
+ * @version Dec-4-2018
+ */
+
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
@@ -18,19 +26,10 @@ public class DesktopLauncher {
 		config.height = 800;
 
 		// Setup application
-//		game.setScreen(TitleScreen(game);
 		RPGame game = new RPGame();
 		Application app = new LwjglApplication((game), config);
-//		this.setScreen(new TitleScreen(this));
-
-
-
-		// Logging
 		Gdx.app = app;
-		//Gdx.app.setLogLevel(Application.LOG_INFO);
-		//Gdx.app.setLogLevel(Application.LOG_DEBUG);
-		//Gdx.app.setLogLevel(Application.LOG_ERROR);
-		//Gdx.app.setLogLevel(Application.LOG_NONE)
+
 
 	}
 }
