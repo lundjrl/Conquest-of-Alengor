@@ -51,6 +51,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 //	MapLayer doorwayLayer;
 //	MapObjects npcObjects;
 	MapObject npcObject;
+	MapObject monsterObject;
 //	MapObject loadWarehouse;
 //	Rectangle doorOutWarehouse, doorInWarehouse;
 //	int i = 0;
@@ -78,6 +79,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 //	Rectangle playerBox;
 //	float offset = 8.0f; // pixel offset for player collision
 	private NPC npcTest;
+	private Monster monster;
+	private String[] monsters = {"Lumberjack3"};
 
 	// Movement
     float characterSpeed = 5.0f;
@@ -173,8 +176,10 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 		npcObject = maps.get(ConquestOfAlengor).getNpcLayer().getObjects().get("Fisherman6");
-		npcTest = new NPC(npcObject);
+		npcTest = new NPC(npcObject, "TrueAlengor.png");
 
+		monsterObject = maps.get(ConquestOfAlengor).getNpcLayer().getObjects().get("Lumberjack3");
+		monster = new Monster(monsterObject, "Witch2.png", 200, 1);
 //		getCurrentMap().getTiledMapRenderer().setView(camera);
 //		getCurrentMap().getTiledMapRenderer().render();
 
@@ -210,7 +215,14 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		}
 
 
-
+		if(attacking()){
+			if(monster.getDamage() < player.getPlayerHealth()){
+				player.setPlayerHealth(player.getPlayerHealth()-monster.getDamage());
+			}
+			else{
+				player = new Player();
+			}
+		}
 
 
 
@@ -386,6 +398,28 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			}
 		}
 
+		return false;
+	}
+
+
+	private boolean attacking(){
+		MapLayer npcs = getCurrentMap().getNpcLayer();
+
+		Rectangle rec = null;
+
+		for(MapObject object: npcs.getObjects()){
+			if(object instanceof RectangleMapObject){
+				rec = ((RectangleMapObject)object).getRectangle();
+				if(Math.abs(player.getPlayerBox().getX() - rec.getX()) < 20 &&
+				Math.abs(player.getPlayerBox().getY() -rec.getY()) < 20){
+					for(String s: this.monsters){
+						if(s.equals(object.getName()))
+						return true;
+					}
+
+				}
+			}
+		}
 		return false;
 	}
 

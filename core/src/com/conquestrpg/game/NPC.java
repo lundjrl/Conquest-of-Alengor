@@ -32,11 +32,11 @@ public class NPC {
     protected float move;
     protected float i;
 
-    NPC(MapObject npcObject){
+    NPC(MapObject npcObject, String image){
         // Character
         this.npcObject = npcObject;
         character = new SpriteBatch();
-        texture = new Texture(Gdx.files.internal("TrueAlengor.png"));
+        texture = new Texture(Gdx.files.internal(image));
         sprite = new Sprite(texture);
 
 
@@ -68,7 +68,8 @@ public class NPC {
 //        }
 
         sprite.translateX(move);
-
+//        playerBox.setPosition(move, playerBox.getY());
+//        playerBox.setX(playerBox.getX() + move);
         i++;
 
         // Good for enemy movement
@@ -121,5 +122,6 @@ public class NPC {
     public Rectangle getPlayerBox(){
         return this.playerBox;
     }
+
 
 }

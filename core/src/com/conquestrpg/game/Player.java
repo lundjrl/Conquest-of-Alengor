@@ -22,7 +22,7 @@ public class Player {
     private Texture texture;
     private Sprite sprite;
     private Rectangle playerBox;
-    private float offset = 8.0f; // pixel offset for player collision
+    private float offset =8.0f; // pixel offset for player collision
     private float x, y;
     private int health;
     private int baseDamage;
@@ -59,12 +59,13 @@ public class Player {
         return this.character;
     }
 
+
     public Rectangle getPlayerBox(){
         return this.playerBox;
     }
 
     public void setPosition(float x, float y){
-
+        this.sprite.setPosition(x,y);
     }
     public void setPlayerHealth(int health){
         this.health = health;
@@ -72,6 +73,7 @@ public class Player {
     public int getPlayerHealth(){
         return this.health;
     }
+
 
 
 }
