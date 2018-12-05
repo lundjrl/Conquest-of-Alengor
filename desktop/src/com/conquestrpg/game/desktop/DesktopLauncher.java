@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx; // Graphics, Audio, Input, Files and Net modules
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.conquestrpg.game.RPGame;
+import com.conquestrpg.game.Screens.TitleScreen;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
@@ -17,7 +18,12 @@ public class DesktopLauncher {
 		config.height = 800;
 
 		// Setup application
-		Application app = new LwjglApplication(new RPGame(), config);
+//		game.setScreen(TitleScreen(game);
+		RPGame game = new RPGame();
+		Application app = new LwjglApplication((game), config);
+//		this.setScreen(new TitleScreen(this));
+
+
 
 		// Logging
 		Gdx.app = app;
