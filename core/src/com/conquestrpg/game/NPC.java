@@ -86,7 +86,6 @@ public class NPC {
 
     /**
      * Renders the NPC to the game with movement.
-     * @return none
      */
     public void render () {
 

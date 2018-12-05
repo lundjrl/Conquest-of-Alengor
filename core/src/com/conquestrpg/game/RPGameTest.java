@@ -1,13 +1,16 @@
 package com.conquestrpg.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Rectangle;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.nio.channels.FileLock;
 import java.util.HashMap;
 
 import static org.junit.Assert.*;
@@ -25,6 +28,9 @@ public class RPGameTest {
 
 
     /** Test loads a .tmx file to the Hashmap */
+    /**
+     * Test loads a .tmx file to the Hashmap
+     */
     @Test
     public void testmaploader() {
         final String ConquestOfAlengor = "ConquestOfAlengor.tmx";

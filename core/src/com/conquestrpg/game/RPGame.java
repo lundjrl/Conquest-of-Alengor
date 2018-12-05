@@ -15,8 +15,8 @@ import static java.lang.System.exit;
 /**
  * This class is the heart of COA, it has the main features that makes the game run, including: maps, player,
  * titlescreen, NPC and monster implementation, and screens.
- * @Authors: James Lund, Zachary Thomas, Matthew Doan, Aaron Brinkerhoff
- * @Version: Dec-4-2018
+ * @author: James Lund, Zachary Thomas, Matthew Doan, Aaron Brinkerhoff
+ * @version: 12/04/18
  * Purpose: Final Project for Software Engineering, CIS 350-01, GVSU
  */
 
@@ -105,7 +105,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	/**
 	 * Create method in RPGgame class. Used to initialy create the game in which the player is released in.
-	 * @return none
 	 */
 	@Override
 	public void create () {
@@ -171,7 +170,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	/**
 	 * This method renders the screen for visualization of the game.
-	 * @return none
 	 */
 	@Override
 	public void render () {
@@ -225,7 +223,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	/**
 	 * Getting rid of what we don't need anymore. Used for termination of the program.
-	 * @return none
 	 */
 	@Override
 	public void dispose(){
@@ -241,7 +238,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	/**
 	 * Method for collision detection. Player will bounce back if hit into a collision layer.
 	 * @param playerBox
-	 * @return collision if is one
 	 */
 	protected boolean isCollision(Rectangle playerBox){
 		MapLayer testCollision = null;
@@ -312,7 +308,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	/**
 	 * Checks for a possible portal to another tilemap
-	 * @return none
 	 */
 	public void checkForDoor(){
 
@@ -388,7 +383,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	/**
 	 * Implements the player being attacked. If the monster is attacking, the player will take damage and die.
-	 * @return none
 	 */
 	public void isAttacked(){
 		// Calling the attacking method to determine if the player will lose health.
@@ -422,7 +416,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	/**
 	 * Helper method that sets to false all maps when loading
-	 * @return none
  	 */
 	private void setFalseMaps(){
 		// For each loop that compares each map and sets them to false.
@@ -445,7 +438,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	/**
 	 * Checks whether an arrow key is being pressed down. If not then the character will not be moving.
 	 * @param keycode
-	 * @return
 	 */
 	@Override
 	public boolean keyUp(int keycode) {
