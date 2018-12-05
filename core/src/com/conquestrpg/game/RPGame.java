@@ -27,6 +27,8 @@ import com.conquestrpg.game.Screens.TitleScreen;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static java.lang.System.exit;
+
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	//public static final int WIDTH = 800;
@@ -276,32 +278,38 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		if(getCurrentMap().isDoorOverlap(player.getPlayerBox())){
 			lastMapName = getCurrentMap().getCurrentMapName();
 			stepOnDoor = getCurrentMap().getDoorRectangleObject().getName();
-			if(!stepOnDoor.equals(MainTitle)){
-				//recPlaceHolder = getCurrentMap().getDoor();
-				setFalseMaps();
-				maps.get(stepOnDoor).setCurrent(true);
-				getCurrentMap().loadDoor(lastMapName);
+			try {
+				if (!stepOnDoor.equals(MainTitle)) {
+					//recPlaceHolder = getCurrentMap().getDoor();
+					setFalseMaps();
+					maps.get(stepOnDoor).setCurrent(true);
+					getCurrentMap().loadDoor(lastMapName);
 
-				if(lastMapName.equals(MainTitle)){
-					// Change camera scaling after main screen
-					camera.setToOrtho(false, (width/3), (height/3));
+					if (lastMapName.equals(MainTitle)) {
+						// Change camera scaling after main screen
+						camera.setToOrtho(false, (width / 3), (height / 3));
 
-				}
-
-				System.out.println("Player before: " +player.getPlayerBox().getX() + " " +player.getPlayerBox().getY());
-				System.out.println("Current door:: "+getCurrentMap().getDoor().getX()+" " + getCurrentMap().getDoor().getY());
+					}
 
 
+					System.out.println("Player before: " + player.getPlayerBox().getX() + " " + player.getPlayerBox().getY());
+					System.out.println("Current door:: " + getCurrentMap().getDoor().getX() + " " + getCurrentMap().getDoor().getY());
 
 
-				if(getCurrentMap().getCurrentMapName().equals(ConquestOfAlengor)){
-					player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() - 20);
+					if (getCurrentMap().getCurrentMapName().equals(ConquestOfAlengor)) {
+						player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() - 20);
 //				player.getPlayerBox().setX(getCurrentMap().getDoor().getX());
 //				player.getPlayerBox().setX(getCurrentMap().getDoor().getY());
-				} else
-					player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
+					} else
+						player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
 
-				System.out.println("Player after: " +player.getPlayerBox().getX() + " " +player.getPlayerBox().getY());
+					System.out.println("Player after: " + player.getPlayerBox().getX() + " " + player.getPlayerBox().getY());
+				}
+			} catch (NullPointerException e){
+				if (getCurrentMap().getCurrentMapName().equals(MainTitle)) {
+					exit(0);
+				}
+				System.out.println("Game closed. Map does not exist yet");
 			}
 
 
