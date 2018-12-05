@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.conquestrpg.game.RPGame</OriginalElement>
+  <nodes>
+    <node x="298.9999999999999" y="444.0">com.conquestrpg.game.Player</node>
+    <node x="1133.5" y="67.5">com.badlogic.gdx.ApplicationListener</node>
+    <node x="514.4999999999999" y="2088.0">com.conquestrpg.game.desktop.DesktopLauncher</node>
+    <node x="607.8367768595041" y="0.0">com.conquestrpg.game.NPC</node>
+    <node x="466.4999999999999" y="908.0">com.conquestrpg.game.RPGame</node>
+    <node x="1125.0" y="500.0">com.badlogic.gdx.ApplicationAdapter</node>
+    <node x="845.9999999999999" y="489.5">com.badlogic.gdx.InputProcessor</node>
+    <node x="0.0" y="356.0">com.conquestrpg.game.MapLoader</node>
+    <node x="533.9999999999999" y="411.0">com.conquestrpg.game.Monster</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.badlogic.gdx.ApplicationAdapter" target="com.badlogic.gdx.ApplicationListener">
+      <point x="0.0" y="-92.0" />
+      <point x="0.0" y="80.5" />
+    </edge>
+    <edge source="com.conquestrpg.game.RPGame" target="com.conquestrpg.game.Monster">
+      <point x="0.0" y="-565.0" />
+      <point x="-65.0" y="181.0" />
+    </edge>
+    <edge source="com.conquestrpg.game.Monster" target="com.conquestrpg.game.NPC">
+      <point x="-65.0" y="-181.0" />
+      <point x="598.9999999999999" y="336.0" />
+      <point x="632.8367768595041" y="336.0" />
+      <point x="-75.0" y="148.0" />
+    </edge>
+    <edge source="com.conquestrpg.game.RPGame" target="com.conquestrpg.game.Player">
+      <point x="-48.181818181818244" y="-565.0" />
+      <point x="550.8181818181816" y="858.0" />
+      <point x="352.7499999999999" y="858.0" />
+      <point x="-53.75" y="148.0" />
+    </edge>
+    <edge source="com.conquestrpg.game.RPGame" target="com.conquestrpg.game.NPC">
+      <point x="72.27272727272725" y="-565.0" />
+      <point x="671.2727272727271" y="868.0" />
+      <point x="815.4999999999999" y="868.0" />
+      <point x="815.4999999999999" y="316.0" />
+      <point x="782.8367768595041" y="316.0" />
+      <point x="75.0" y="148.0" />
+    </edge>
+    <edge source="com.badlogic.gdx.InputProcessor" target="com.badlogic.gdx.InputProcessor">
+      <point x="-64.75" y="102.5" />
+      <point x="910.7499999999999" y="714.5" />
+      <point x="825.9999999999999" y="714.5" />
+      <point x="825.9999999999999" y="592.0" />
+      <point x="-129.5" y="-0.0" />
+    </edge>
+    <edge source="com.conquestrpg.game.RPGame" target="com.conquestrpg.game.MapLoader">
+      <point x="-72.27272727272725" y="-565.0" />
+      <point x="526.7272727272726" y="868.0" />
+      <point x="232.5" y="868.0" />
+      <point x="93.0" y="236.0" />
+    </edge>
+    <edge source="com.conquestrpg.game.desktop.DesktopLauncher" target="com.conquestrpg.game.RPGame">
+      <point x="-42.25" y="-25.5" />
+      <point x="556.7499999999999" y="2063.0" />
+      <point x="532.7499999999999" y="2063.0" />
+      <point x="-66.25" y="565.0" />
+    </edge>
+    <edge source="com.conquestrpg.game.RPGame" target="com.badlogic.gdx.InputProcessor">
+      <point x="96.36363636363637" y="-565.0" />
+      <point x="695.3636363636363" y="878.0" />
+      <point x="1040.25" y="878.0" />
+      <point x="64.75" y="102.5" />
+    </edge>
+    <edge source="com.conquestrpg.game.RPGame" target="com.badlogic.gdx.ApplicationAdapter">
+      <point x="120.4545454545455" y="-565.0" />
+      <point x="719.4545454545454" y="888.0" />
+      <point x="1216.5" y="888.0" />
+      <point x="0.0" y="92.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="611.0" y="1134.0" />
+  <SelectedNodes>
+    <node>com.conquestrpg.game.RPGame</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

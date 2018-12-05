@@ -10,27 +10,32 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Rectangle;
 import java.util.HashMap;
-
 import static java.lang.System.exit;
+
+/**
+ *
+ *
+ *
+ */
 
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 
-	public SpriteBatch batch;
+	private SpriteBatch batch;
 
 	private float width;
 	private float height;
 
 	// Maps
-	OrthographicCamera camera;
+	private OrthographicCamera camera;
 
-	MapObject npcObject;
-	MapObject monsterObject;
+	private MapObject npcObject;
+	private MapObject monsterObject;
 
 
 	// Loaded maps in ArrayList
-	HashMap<String, MapLoader> maps;
+	private HashMap<String, MapLoader> maps;
 
 	// String to hold door if player overlaps
     private String stepOnDoor;
@@ -45,7 +50,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	// Player
 	private Player player;
 
-	Music music;
+	private Music music;
 
 	private NPC npcTest;
 	private Monster monster;
