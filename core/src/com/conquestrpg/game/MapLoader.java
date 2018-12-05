@@ -27,7 +27,6 @@ public class MapLoader {
 
     private boolean isCurrent = false;
 
-
     //Map layers
     private final String COLLISION_LAYER = "COLLISION_LAYER";
     private final String NPC_LAYER = "NPC_LAYER";

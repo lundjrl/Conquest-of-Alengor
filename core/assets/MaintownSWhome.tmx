@@ -335,15 +335,7 @@
   <object id="15" x="336" y="384.667" width="47.3333" height="47"/>
   <object id="16" x="367.333" y="431" width="16.3333" height="49.3333"/>
  </objectgroup>
- <objectgroup id="10" name="ITEM_LAYER">
-  <object id="18" x="320.333" y="356" width="13" height="11.6667"/>
-  <object id="19" x="335" y="350.667" width="17.3333" height="2"/>
-  <object id="20" x="352.667" y="351" width="31" height="2.66667"/>
-  <object id="21" x="384" y="351" width="14.6667" height="3.33333"/>
-  <object id="22" x="465.667" y="432.667" width="12.6667" height="14.6667"/>
-  <object id="23" x="479.333" y="427.667" width="16" height="5"/>
-  <object id="24" x="480.333" y="351" width="30.6667" height="4"/>
- </objectgroup>
+ <objectgroup id="10" name="ITEM_LAYER"/>
  <objectgroup id="12" name="NPC_SPAWN_LAYER"/>
  <objectgroup id="13" name="PLAYER_SPAWN_LAYER"/>
  <objectgroup id="9" name="DOORWAY_LAYER">

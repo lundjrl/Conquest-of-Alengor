@@ -2,62 +2,32 @@ package com.conquestrpg.game;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
-import com.conquestrpg.game.Screens.TitleScreen;
-import com.conquestrpg.game.States.GameStateManager;
-import com.conquestrpg.game.States.MenuState;
-import com.conquestrpg.game.Screens.TitleScreen;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import static java.lang.System.exit;
 
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
-	//public static final int WIDTH = 800;
-	//public static final int HEIGHT = 800;
-	//public static final String TITLE = "Conquest Of Alengor";
-	private GameStateManager gsm;
+
+
 	public SpriteBatch batch;
 
 	private float width;
 	private float height;
 
 	// Maps
-//	TiledMap tiledMap;
 	OrthographicCamera camera;
-//	TiledMapRenderer tiledMapRenderer;
-//	TiledMapRenderer tiledMapRendererMain;
-//	TiledMap tiledMap2;
-//	TiledMapRenderer tiledMapRendererWarehouse;
-//	MapLayer collisionLayer;
-//	MapLayer npcLayer;
-//	MapLayer playerSpawn;
-//	MapLayer doorwayLayer;
-//	MapObjects npcObjects;
+
 	MapObject npcObject;
 	MapObject monsterObject;
-//	MapObject loadWarehouse;
-//	Rectangle doorOutWarehouse, doorInWarehouse;
-//	int i = 0;
-//	int frame = 0;
+
 
 	// Loaded maps in ArrayList
 	HashMap<String, MapLoader> maps;
@@ -74,12 +44,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	// Player
 	private Player player;
-//	SpriteBatch character;
-//	Texture texture;
-//	Sprite sprite;
+
 	Music music;
-//	Rectangle playerBox;
-//	float offset = 8.0f; // pixel offset for player collision
+
 	private NPC npcTest;
 	private Monster monster;
 	private String[] monsters = {"Lumberjack3"};
@@ -92,6 +59,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
     float saveCharX;
     float saveCharY;
+
+    private int offset = 20;
 
     // Tilemap rendering
     int[] background = {0,1,2,3,4,6,7};
@@ -112,20 +81,16 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	public void create () {
 
 		batch = new SpriteBatch();
-		gsm = new GameStateManager();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
-		gsm.push(new MenuState(gsm));
-
-		//this.setScreen(new TitleScreen(this));
 
 		width = Gdx.graphics.getWidth();
 		height = Gdx.graphics.getHeight();
 
 		camera = new OrthographicCamera();
+
 		//Scale
 		camera.setToOrtho(false, (width * 1.5f), (height * 1.5f));
 		camera.update();
-
 
 		// MapLoader class
 		maps = new HashMap<String, MapLoader>();
@@ -138,16 +103,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		maps.put(Mansion, new MapLoader(Mansion));
 		maps.put(MainTitle, new MapLoader(MainTitle));
 
-
-
-
-
 		// Set current map to main map
 		maps.get(MainTitle).setCurrent(true);
-		//maps.get(ConquestOfAlengor).setCurrent(true);
-
-
-
 
 		// Music
 		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Sheet.mp3"));
@@ -157,46 +114,24 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		music.setVolume(0.5f);
 		music.play();
 
-		// Camera Start
-		camera.translate(800, 270);
-
-
 		Gdx.input.setInputProcessor(this);
 
-
-//		// Character
-//		character = new SpriteBatch();
-//		texture = new Texture(Gdx.files.internal("Main.png"));
-//		sprite = new Sprite(texture);
-//
-//
-//		// Move in multiples of 16
-//		sprite.translate(992, 336);
-//		playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
-//
-		// Set Camera position the same as the character
-
-
+		// Create NPC
 		npcObject = maps.get(ConquestOfAlengor).getNpcLayer().getObjects().get("Fisherman6");
 		npcTest = new NPC(npcObject, "TrueAlengor.png");
 
+		// Create monster
 		monsterObject = maps.get(ConquestOfAlengor).getNpcLayer().getObjects().get("Lumberjack3");
 		monster = new Monster(monsterObject, "Witch2.png", 200, 1);
-//		getCurrentMap().getTiledMapRenderer().setView(camera);
-//		getCurrentMap().getTiledMapRenderer().render();
-
 
 		// Create player and start at spawn
 		player = new Player();
 		Rectangle starter = ((RectangleMapObject)getCurrentMap().getPlayerSpawnLayer().getObjects().get("spawn")).getRectangle();
 		float startX = starter.getX();
 		float startY = starter.getY();
-
-
 		player.setPosition(startX, startY);
 		player.getPlayerBox().set(startX, startY,16.0f, 0.5f);
 		camera.position.set(player.getSprite().getX(), player.getSprite().getY(), 0);
-
 
 	}
 
@@ -205,8 +140,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-		gsm.update(Gdx.graphics.getDeltaTime());
-		gsm.render(batch);
+
 
 
 
@@ -216,159 +150,31 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			saveCharY = player.getSprite().getY();
 		}
 
+		movePlayer();
 
-		if(attacking()){
-			if(monster.getDamage() < player.getPlayerHealth()){
-				player.setPlayerHealth(player.getPlayerHealth()-monster.getDamage());
-			}
-			else{
-				player = new Player();
-			}
-		}
+		isAttacked();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		// Input
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT) && !isCollision(player.getPlayerBox())){
-			characterX -= Gdx.graphics.getDeltaTime() * characterSpeed;
-		}
-
-
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT) && !isCollision(player.getPlayerBox())){
-            characterX += Gdx.graphics.getDeltaTime() * characterSpeed;
-        }
-
-
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_UP) && !isCollision(player.getPlayerBox())){
-            characterY += Gdx.graphics.getDeltaTime() * characterSpeed;
-        }
-
-
-        if(Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN) && !isCollision(player.getPlayerBox())){
-            characterY -= Gdx.graphics.getDeltaTime() * characterSpeed;
-        }
-
-
-        // Implement max speed
-        if(characterX >= maxSpeed)
-        	characterX = maxSpeed;
-        else if(characterX <= -maxSpeed)
-			characterX = -maxSpeed;
-
-        if(characterY >= maxSpeed)
-        	characterY = maxSpeed;
-        else if(characterY <= -maxSpeed)
-			characterY = -maxSpeed;
-
-        // If there is a collision, move the player where they were
-		if(isCollision(player.getPlayerBox())){
-			player.getSprite().setPosition(saveCharX, saveCharY);
-		}
-
-
-
-
-
-
-
-
-		if(getCurrentMap().isDoorOverlap(player.getPlayerBox())){
-			lastMapName = getCurrentMap().getCurrentMapName();
-			stepOnDoor = getCurrentMap().getDoorRectangleObject().getName();
-			try {
-				if (!stepOnDoor.equals(MainTitle)) {
-					//recPlaceHolder = getCurrentMap().getDoor();
-					setFalseMaps();
-					maps.get(stepOnDoor).setCurrent(true);
-					getCurrentMap().loadDoor(lastMapName);
-
-					if (lastMapName.equals(MainTitle)) {
-						// Change camera scaling after main screen
-						camera.setToOrtho(false, (width / 3), (height / 3));
-
-					}
-
-
-					System.out.println("Player before: " + player.getPlayerBox().getX() + " " + player.getPlayerBox().getY());
-					System.out.println("Current door:: " + getCurrentMap().getDoor().getX() + " " + getCurrentMap().getDoor().getY());
-
-
-					if (getCurrentMap().getCurrentMapName().equals(ConquestOfAlengor)) {
-						player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() - 20);
-//				player.getPlayerBox().setX(getCurrentMap().getDoor().getX());
-//				player.getPlayerBox().setX(getCurrentMap().getDoor().getY());
-					} else
-						player.getSprite().setPosition(getCurrentMap().getDoor().getX(), getCurrentMap().getDoor().getY() + 20);
-
-					System.out.println("Player after: " + player.getPlayerBox().getX() + " " + player.getPlayerBox().getY());
-				}
-			} catch (NullPointerException e){
-				if (getCurrentMap().getCurrentMapName().equals(MainTitle)) {
-					exit(0);
-				}
-				System.out.println("Game closed. Map does not exist yet");
-			}
-
-
-		}
-
-
-
-
-
-
-
-
-
-
+		checkForDoor();
 
         // Move character and camera at the same time.
         player.getSprite().translate(Math.round(characterX), Math.round(characterY));
         camera.position.set(Math.round(player.getSprite().getX()), Math.round(player.getSprite().getY()), 0);
 
-
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update(); //This changes camera position
-		getCurrentMap().getTiledMapRenderer().setView(camera); //type something or whatever
+		camera.update();
+		getCurrentMap().getTiledMapRenderer().setView(camera);
 
         // Render below character
-		//tiledMapRenderer.render(background);
 		getCurrentMap().getTiledMapRenderer().render();
 
-
-//		// Render character
+		// Render character
 		player.getCharacter().setProjectionMatrix(camera.combined);
 		npcTest.getCharacter().setProjectionMatrix(camera.combined);
-//		character.begin();
-//		sprite.draw(character);
-//		character.end();
-//		playerBox.setCenter(sprite.getX() + offset, sprite.getY());
+		monster.getCharacter().setProjectionMatrix(camera.combined);
 
 		player.render();
 		npcTest.render();
-
-        // Render over character
-        //tiledMapRenderer.render(overlay);
-		//camera.update();
-
-		//System.out.println(player.getPlayerBox().getX() +" " + player.getPlayerBox().getY());
-
-
+		monster.render();
 	}
 	
 	@Override
@@ -409,9 +215,73 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		return false;
 	}
 
+	public void movePlayer(){
+		// Input
+		if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT) && !isCollision(player.getPlayerBox())){
+			characterX -= Gdx.graphics.getDeltaTime() * characterSpeed;
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT) && !isCollision(player.getPlayerBox())){
+			characterX += Gdx.graphics.getDeltaTime() * characterSpeed;
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.DPAD_UP) && !isCollision(player.getPlayerBox())){
+			characterY += Gdx.graphics.getDeltaTime() * characterSpeed;
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN) && !isCollision(player.getPlayerBox())){
+			characterY -= Gdx.graphics.getDeltaTime() * characterSpeed;
+		}
+		// Implement max speed
+		if(characterX >= maxSpeed)
+			characterX = maxSpeed;
+		else if(characterX <= -maxSpeed)
+			characterX = -maxSpeed;
+
+		if(characterY >= maxSpeed)
+			characterY = maxSpeed;
+		else if(characterY <= -maxSpeed)
+			characterY = -maxSpeed;
+
+		// If there is a collision, move the player where they were
+		if(isCollision(player.getPlayerBox())){
+			player.getSprite().setPosition(saveCharX, saveCharY);
+		}
+	}
+
+	public void checkForDoor(){
+		if(getCurrentMap().isDoorOverlap(player.getPlayerBox())){
+			lastMapName = getCurrentMap().getCurrentMapName();
+			stepOnDoor = getCurrentMap().getDoorRectangleObject().getName();
+			try {
+				if (!stepOnDoor.equals(MainTitle)) {
+					//recPlaceHolder = getCurrentMap().getDoor();
+					setFalseMaps();
+					maps.get(stepOnDoor).setCurrent(true);
+					getCurrentMap().loadDoor(lastMapName);
+
+					if (lastMapName.equals(MainTitle)) {
+						// Change camera scaling after main screen
+						camera.setToOrtho(false, (width / 3), (height / 3));
+
+					}
+
+					if (getCurrentMap().getCurrentMapName().equals(ConquestOfAlengor)) {
+						player.getSprite().setPosition(getCurrentMap().getDoor().getX(),
+								getCurrentMap().getDoor().getY() - offset);
+
+					} else
+						player.getSprite().setPosition(getCurrentMap().getDoor().getX(),
+								getCurrentMap().getDoor().getY() + offset);
+				}
+			} catch (NullPointerException e){
+				if (getCurrentMap().getCurrentMapName().equals(MainTitle)) {
+					exit(0);
+				}
+				System.out.println("Game closed. Map does not exist yet");
+			}
+		}
+	}
 
 	private boolean attacking(){
-		MapLayer npcs = getCurrentMap().getNpcLayer();
+		MapLayer npcs = maps.get(ConquestOfAlengor).getNpcLayer();
 
 		Rectangle rec = null;
 
@@ -429,6 +299,17 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			}
 		}
 		return false;
+	}
+
+	public void isAttacked(){
+		if(attacking()){
+			if(monster.getDamage() < player.getPlayerHealth()){
+				player.setPlayerHealth(player.getPlayerHealth()-monster.getDamage());
+			}
+			else{
+				player = new Player();
+			}
+		}
 	}
 
 	// Get current map that player is on
@@ -484,9 +365,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		//Vector3 clickCoordinates = new Vector3(screenX,screenY,0);
-		//Vector3 position = camera.unproject(clickCoordinates);
-		//sprite.setPosition(position.x, position.y);
+
 		return true;
 	}
 	@Override

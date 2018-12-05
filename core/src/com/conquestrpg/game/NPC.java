@@ -15,8 +15,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
-
-
 public class NPC {
 
     // Player
@@ -38,41 +36,20 @@ public class NPC {
         character = new SpriteBatch();
         texture = new Texture(Gdx.files.internal(image));
         sprite = new Sprite(texture);
+        npcX = ((RectangleMapObject) npcObject).getRectangle().getX();
+        npcY = ((RectangleMapObject) npcObject).getRectangle().getY();
+        sprite.setPosition(npcX, npcY );
 
-
-        // Move in multiples of 16
-        //sprite.translate(992, 336);
-        //playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
-         npcX = ((RectangleMapObject) npcObject).getRectangle().getX();
-         npcY = ((RectangleMapObject) npcObject).getRectangle().getY();
-         //System.out.println("In NPC: X AND Y: " + npcX +" "+ npcY);
-         sprite.setPosition(npcX, npcY );
+         // For if enemy
          //move = -0.3f;
-
     }
 
     public void render () {
 
-//        // Move NPC
-//        move = move -.001f;
-//
-//        if(move < -0.3f){
-//            move = .03f;
-//        }
-//
-//        sprite.translateX(move);
-//        i = i - .001f;
-
-//        if(i > -0.3f){
-//            i = 0.3f;
-//        }
-
         sprite.translateX(move);
-//        playerBox.setPosition(move, playerBox.getY());
-//        playerBox.setX(playerBox.getX() + move);
-        i++;
 
         // Good for enemy movement
+//        i++;
 //        if( i == 100){
 //            move = 0.3f;
 //            i = -100;
@@ -87,19 +64,10 @@ public class NPC {
             move = .3f;
         }
 
-        //System.out.println(move);
-
-
-
         // Render character
-        //character.setProjectionMatrix(camera.combined);
         character.begin();
         sprite.draw(character);
         character.end();
-        //playerBox.setCenter(sprite.getX() + offset, sprite.getY());
-
-
-
 
     }
 
@@ -122,6 +90,5 @@ public class NPC {
     public Rectangle getPlayerBox(){
         return this.playerBox;
     }
-
 
 }
