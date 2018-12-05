@@ -24,34 +24,23 @@ public class Player {
     private Rectangle playerBox;
     private float offset = 8.0f; // pixel offset for player collision
     private float x, y;
+    private int health;
+    private int baseDamage;
 
-    public Player(){
+    Player(){
         // Character
         character = new SpriteBatch();
         texture = new Texture(Gdx.files.internal("Main.png"));
         sprite = new Sprite(texture);
-        playerBox = new Rectangle();
+
 
         // Move in multiples of 16
-        //sprite.translate(992, 336);
-        //playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
-
+        sprite.translate(992, 336);
+        playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
+        baseDamage = 15;
+        health = 200;
 
     }
-
-//    public Player(){
-//        // Character
-//        character = new SpriteBatch();
-//        texture = new Texture(Gdx.files.internal("Main.png"));
-//        sprite = new Sprite(texture);
-//        playerBox = new Rectangle();
-//
-//        // Move in multiples of 16
-//        //sprite.translate(992, 336);
-//        //playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
-//
-//
-//    }
 
     public void render () {
         // Render character
@@ -75,7 +64,14 @@ public class Player {
     }
 
     public void setPosition(float x, float y){
-        this.sprite.setPosition(x,y);
+
     }
+    public void setPlayerHealth(int health){
+        this.health = health;
+    }
+    public int getPlayerHealth(){
+        return this.health;
+    }
+
 
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="25">
+<map version="1.1" tiledversion="2018.09.12" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="25">
  <tileset firstgid="1" source="rrrroguelikeSheet_transparent.tsx"/>
  <layer id="1" name="ground" width="50" height="50">
   <data encoding="csv">
@@ -109,6 +109,30 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="8" name="COLLISION_LAYER">
+  <object id="9" x="447.667" y="384.333" width="15.6667" height="111.333"/>
+  <object id="10" x="462.667" y="384.333" width="33" height="43"/>
+  <object id="11" x="303.667" y="479.333" width="224" height="15.6667"/>
+  <object id="12" x="511.667" y="304.667" width="15.6667" height="175.333"/>
+  <object id="13" x="304.667" y="304.667" width="206.667" height="46.3333"/>
+  <object id="14" x="304.333" y="350" width="15" height="144.667"/>
+  <object id="15" x="336" y="384.667" width="47.3333" height="47"/>
+  <object id="16" x="367.333" y="431" width="16.3333" height="49.3333"/>
+ </objectgroup>
+ <objectgroup id="9" name="DOORWAY_LAYER">
+  <object id="17" name="ConquestOfAlengor.tmx" x="400" y="472.667" width="31.3333" height="7"/>
+ </objectgroup>
+ <objectgroup id="10" name="ITEM_LAYER">
+  <object id="18" x="320.333" y="356" width="13" height="11.6667"/>
+  <object id="19" x="335" y="350.667" width="17.3333" height="2"/>
+  <object id="20" x="352.667" y="351" width="31" height="2.66667"/>
+  <object id="21" x="384" y="351" width="14.6667" height="3.33333"/>
+  <object id="22" x="465.667" y="432.667" width="12.6667" height="14.6667"/>
+  <object id="23" x="479.333" y="427.667" width="16" height="5"/>
+  <object id="24" x="480.333" y="351" width="30.6667" height="4"/>
+ </objectgroup>
+ <objectgroup id="12" name="NPC_SPAWN_LAYER"/>
+ <objectgroup id="13" name="PLAYER_SPAWN_LAYER"/>
  <layer id="3" name="top wall" width="50" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -325,28 +349,4 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="8" name="COLLISION_LAYER">
-  <object id="9" x="447.667" y="384.333" width="15.6667" height="111.333"/>
-  <object id="10" x="462.667" y="384.333" width="33" height="43"/>
-  <object id="11" x="303.667" y="479.333" width="224" height="15.6667"/>
-  <object id="12" x="511.667" y="304.667" width="15.6667" height="175.333"/>
-  <object id="13" x="304.667" y="304.667" width="206.667" height="46.3333"/>
-  <object id="14" x="304.333" y="350" width="15" height="144.667"/>
-  <object id="15" x="336" y="384.667" width="47.3333" height="47"/>
-  <object id="16" x="367.333" y="431" width="16.3333" height="49.3333"/>
- </objectgroup>
- <objectgroup id="10" name="ITEM_LAYER">
-  <object id="18" x="320.333" y="356" width="13" height="11.6667"/>
-  <object id="19" x="335" y="350.667" width="17.3333" height="2"/>
-  <object id="20" x="352.667" y="351" width="31" height="2.66667"/>
-  <object id="21" x="384" y="351" width="14.6667" height="3.33333"/>
-  <object id="22" x="465.667" y="432.667" width="12.6667" height="14.6667"/>
-  <object id="23" x="479.333" y="427.667" width="16" height="5"/>
-  <object id="24" x="480.333" y="351" width="30.6667" height="4"/>
- </objectgroup>
- <objectgroup id="12" name="NPC_SPAWN_LAYER"/>
- <objectgroup id="13" name="PLAYER_SPAWN_LAYER"/>
- <objectgroup id="9" name="DOORWAY_LAYER">
-  <object id="17" name="ConquestOfAlengor.tmx" x="400" y="472.667" width="31.3333" height="7"/>
- </objectgroup>
 </map>
