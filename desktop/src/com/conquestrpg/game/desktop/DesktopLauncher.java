@@ -11,26 +11,19 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
-		// Setup Configuration
+		/** Setup Configuration */
 		config.title = "Conquest of Alengor"; // Title on window
 		config.useGL30 = false; // Use OpenGL 2.0
 		config.width = 1000;
+		/** */
 		config.height = 800;
 
-		// Setup application
-//		game.setScreen(TitleScreen(game);
+		/** Setup application, first we are creating a new game object*/
 		RPGame game = new RPGame();
+		/** Now we are creating an application to run on our desktop */
 		Application app = new LwjglApplication((game), config);
-//		this.setScreen(new TitleScreen(this));
-
-
-
-		// Logging
+		/** Logging */
 		Gdx.app = app;
-		//Gdx.app.setLogLevel(Application.LOG_INFO);
-		//Gdx.app.setLogLevel(Application.LOG_DEBUG);
-		//Gdx.app.setLogLevel(Application.LOG_ERROR);
-		//Gdx.app.setLogLevel(Application.LOG_NONE)
 
 	}
 }
