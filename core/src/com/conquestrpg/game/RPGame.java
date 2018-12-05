@@ -195,7 +195,10 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		// Method-Call for dynamic map implementation
 		checkForDoor();
 
-        // Move character and camera at the same time.
+		//
+//		monster.getPlayerBox().setPosition((monster.getSprite().getX()), monster.getSprite().getY());
+
+		// Move character and camera at the same time.
         player.getSprite().translate(Math.round(characterX), Math.round(characterY));
         camera.position.set(Math.round(player.getSprite().getX()), Math.round(player.getSprite().getY()), 0);
 
@@ -216,6 +219,8 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		player.render();
 		npcTest.render();
 		monster.render();
+
+
 	}
 
 	/**
@@ -238,7 +243,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	 * @param playerBox
 	 * @return collision if is one
 	 */
-	private boolean isCollision(Rectangle playerBox){
+	protected boolean isCollision(Rectangle playerBox){
 		MapLayer testCollision = null;
 		// Error handling for player walking into a collision layer
 		try {
@@ -269,7 +274,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	/**
 	 * Method controls player movement with U/D/L/R arrow keys implemented. Arrow keys can be held down for
 	 * continuous movement.
-	 * @return none
 	 */
 	public void movePlayer(){
 		// Input for Left key being pressed
@@ -370,7 +374,9 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 				if(Math.abs(player.getPlayerBox().getX() - rec.getX()) < 20 &&
 				Math.abs(player.getPlayerBox().getY() -rec.getY()) < 20){
 					for(String s: this.monsters){
-						if(s.equals(object.getName()))
+						if(s.equals(object.getName())){
+							System.out.println(player.getPlayerHealth());
+						}
 						return true;
 					}
 
@@ -393,6 +399,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 			// If the player did take damage, the player will respawn in the starting town.
 			else{
 				player.setPosition(992,336);
+				player.setPlayerHealth(200);
 			}
 		}
 	}
@@ -401,7 +408,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	 * Accessor for the current map that the player is on.
 	 * @return null
 	 */
-	private MapLoader getCurrentMap(){
+	protected MapLoader getCurrentMap(){
 		// Loops through all the maps and determines which one the player is located on.
 		for(HashMap.Entry<String, MapLoader> entry : maps.entrySet()){
 			String key = entry.getKey();

@@ -68,13 +68,17 @@ public class NPC {
         // Load file
         texture = new Texture(Gdx.files.internal(image));
         sprite = new Sprite(texture);
+        playerBox = new Rectangle();
+
 
         // Get coordinates from tile map
         npcX = ((RectangleMapObject) npcObject).getRectangle().getX();
         npcY = ((RectangleMapObject) npcObject).getRectangle().getY();
 
+
         // Set position of NPC
         sprite.setPosition(npcX, npcY );
+        playerBox.setPosition(sprite.getX(), sprite.getY());
 
          // For if enemy
          //move = -0.3f;
@@ -87,6 +91,7 @@ public class NPC {
     public void render () {
 
         sprite.translateX(move);
+
 
         // Good for enemy movement
 //        i++;
@@ -104,10 +109,15 @@ public class NPC {
             move = .3f;
         }
 
+
         // Render character
         character.begin();
         sprite.draw(character);
+
         character.end();
+        playerBox.setCenter(sprite.getX(), sprite.getY());
+
+
 
     }
 
@@ -150,5 +160,6 @@ public class NPC {
     public Rectangle getPlayerBox(){
         return this.playerBox;
     }
+
 
 }

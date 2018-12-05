@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 /**
  * Class that holds all the information of the monster entity in the COA game.
- * @Authors: James Lund, Zachary Thomas, Matthew Doan, Aaron Brinkerhoff
+ * Created by James Lund, Zachary Thomas, Matthew Doan, Aaron Brinkerhoff
  * @Version: Dec-4-2018
  * Purpose: Final Project for Software Engineering, CIS 350-01, GVSU
  */
@@ -57,6 +57,7 @@ public class Monster extends NPC {
         super(npcObject,image);
         this.health = health;
         this.damage = damage;
+        this.playerBox = new Rectangle();
     }
 
     /**
@@ -65,6 +66,7 @@ public class Monster extends NPC {
     public void render(){
         // Calls the super class to render a monster object
         super.render();
+
     }
 
     /**
@@ -114,5 +116,6 @@ public class Monster extends NPC {
     public Rectangle getPlayerBox(){
         return this.playerBox;
     }
+
 
 }
