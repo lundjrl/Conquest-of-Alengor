@@ -20,7 +20,7 @@ public class DesktopLauncher {
 		// Setup application
 //		game.setScreen(TitleScreen(game);
 		RPGame game = new RPGame();
-		Application app = new LwjglApplication(new TitleScreen(game), config);
+		Application app = new LwjglApplication((game), config);
 //		this.setScreen(new TitleScreen(this));
 
 

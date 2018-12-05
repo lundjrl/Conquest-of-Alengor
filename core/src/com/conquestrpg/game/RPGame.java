@@ -97,6 +97,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	private final String starthomeCOA = "starthomeCOA.tmx";
 	private final String Maintownhall = "Maintownhall.tmx";
 	private final String Mansion = "Mansion.tmx";
+	private final String MainTitle = "MainTitle.tmx";
 
 
 	@Override
@@ -114,7 +115,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 		camera = new OrthographicCamera();
 		//Scale
-		camera.setToOrtho(false, (w/3.0f), (h/3.0f));
+		camera.setToOrtho(false, (w), (h));
 		camera.update();
 
 
@@ -127,9 +128,18 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		maps.put(starthomeCOA, new MapLoader(starthomeCOA));
 		maps.put(Maintownhall, new MapLoader(Maintownhall));
 		maps.put(Mansion, new MapLoader(Mansion));
+		maps.put(MainTitle, new MapLoader(MainTitle));
+
+
+
+
 
 		// Set current map to main map
-		maps.get(ConquestOfAlengor).setCurrent(true);
+		maps.get(MainTitle).setCurrent(true);
+		//maps.get(ConquestOfAlengor).setCurrent(true);
+
+
+
 
 		// Music
 		music = Gdx.audio.newMusic(Gdx.files.internal("NiGiD_-_Speculation_Sheet.mp3"));
@@ -162,7 +172,15 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		npcObject = maps.get(ConquestOfAlengor).getNpcLayer().getObjects().get("Fisherman6");
 		npcTest = new NPC(npcObject);
 
+		// Create player and start at spawn
 		player = new Player();
+		Rectangle starter = ((RectangleMapObject)getCurrentMap().getPlayerSpawnLayer().getObjects().get("spawn")).getRectangle();
+		float startX = starter.getX();
+		float startY = starter.getY();
+
+		System.out.println("Start X and Y: "+ startX+" "+startY);
+
+		player.getPlayerBox().set(startX, startY,16.0f, 0.5f);
 		camera.position.set(player.getSprite().getX(), player.getSprite().getY(), 0);
 
 

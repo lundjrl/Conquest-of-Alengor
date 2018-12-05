@@ -30,11 +30,11 @@ public class Player {
         character = new SpriteBatch();
         texture = new Texture(Gdx.files.internal("Main.png"));
         sprite = new Sprite(texture);
-
+        playerBox = new Rectangle();
 
         // Move in multiples of 16
-        sprite.translate(992, 336);
-        playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
+        //sprite.translate(992, 336);
+        //playerBox = new Rectangle(sprite.getX() + offset, sprite.getY(), 16.0f, 0.5f); // For collisions
 
 
     }

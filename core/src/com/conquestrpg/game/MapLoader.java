@@ -45,10 +45,12 @@ public class MapLoader {
         this.currentMapName = map;
         this.tiledMap = new TmxMapLoader().load(map);
         this.tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
-        // Get collision layer
-        this.collisionLayer = tiledMap.getLayers().get("COLLISION_LAYER");
-        this.npcLayer = tiledMap.getLayers().get("NPC_LAYER");
-        this.doorwayLayer = tiledMap.getLayers().get("DOORWAY_LAYER");
+        // Get object layers from tile map
+        this.collisionLayer = tiledMap.getLayers().get(COLLISION_LAYER);
+        this.npcLayer = tiledMap.getLayers().get(NPC_LAYER);
+        this.doorwayLayer = tiledMap.getLayers().get(DOORWAY_LAYER);
+        this.playerSpawnLayer = tiledMap.getLayers().get(PLAYER_SPAWN_LAYER);
+        this.itemLayer = tiledMap.getLayers().get(ITEM_LAYER);
 
     }
 
