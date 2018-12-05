@@ -27,7 +27,7 @@ import com.badlogic.gdx.utils.Array;
 public class NPC {
 
     /** SpriteBatch that holds the character*/
-    private SpriteBatch character;
+    protected SpriteBatch character;
 
     /** Texture to hold image file*/
     private Texture texture;
