@@ -61,7 +61,6 @@ public class Player {
 
     /**
      * Render method used in RPGame class to render player
-     * @return none
      */
     public void render () {
         // Render character

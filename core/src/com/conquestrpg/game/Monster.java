@@ -8,8 +8,8 @@ import com.badlogic.gdx.math.Rectangle;
 
 /**
  * Class that holds all the information of the monster entity in the COA game.
- * @Authors: James Lund, Zachary Thomas, Matthew Doan, Aaron Brinkerhoff
- * @Version: Dec-4-2018
+ * @author: James Lund, Zachary Thomas, Matthew Doan, Aaron Brinkerhoff
+ * @version: Dec-4-2018
  * Purpose: Final Project for Software Engineering, CIS 350-01, GVSU
  */
 public class Monster extends NPC {
