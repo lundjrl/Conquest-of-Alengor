@@ -119,7 +119,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
 		// MapLoader class
-		maps = new HashMap<>();
+		maps = new HashMap<String, MapLoader>();
 		maps.put(ConquestOfAlengor, new MapLoader(ConquestOfAlengor));
 		maps.put(Maintownwarehouse, new MapLoader(Maintownwarehouse));
 		maps.put(MaintownSWhome, new MapLoader(MaintownSWhome));
