@@ -1,6 +1,7 @@
 package com.conquestrpg.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapLayer;
@@ -18,6 +19,7 @@ import static org.junit.Assert.*;
 public class RPGameTest {
 
     private HashMap<String, MapLoader> maps;
+    private  String MainTitle = "MainTitle.tmx";
     private final String ConquestOfAlengor = "ConquestOfAlengor.tmx";
     private MapObject npcObject;
     private Player player;
@@ -38,6 +40,7 @@ public class RPGameTest {
         maps.put(ConquestOfAlengor, new MapLoader(ConquestOfAlengor));
 
     }
+
 
     /** Test that creates a new NPC object */
     @Test
@@ -132,10 +135,36 @@ public class RPGameTest {
         player.setPlayerHealth(0);
     }
     @Test
+    public void testcheckforDoor(){
+        test = new RPGame();
+        assertTrue(test.getCurrentMap().isDoorOverlap(player.getPlayerBox()));
+        test.checkForDoor();
+    }
+    @Test
+    public void testTitleLoader() {
+        test = new RPGame();
+        test.stepOnDoor = test.getCurrentMap().getDoorRectangleObject().getName();
+        assertTrue(test.getCurrentMap().isDoorOverlap(player.getPlayerBox()));
+        assertTrue(!test.stepOnDoor.equals(MainTitle));
+        test.checkForDoor();
+    }
+
+    @Test
     public void testCurrMapview() {
         test = new RPGame();
         test.getCurrentMap().getTiledMapRenderer().setView(camera);
     }
+    @Test
+    public void testCreate(){
+        test = new RPGame();
+        test.create();
+    }
+    @Test
+    public void testRender(){
+        test = new RPGame();
+        test.render();
+    }
+
 
     @Test
     public void setFalseMaps() {
@@ -166,6 +195,8 @@ public class RPGameTest {
         int amount;
         amount = 10;
     }
+
+
 //    @Test
 //    public void
 }

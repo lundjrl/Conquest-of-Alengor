@@ -44,7 +44,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	private HashMap<String, MapLoader> maps;
 
 	/** String to hold door if player overlaps */
-    private String stepOnDoor;
+	protected String stepOnDoor;
 
     /** Rectangle placeholder */
 	private Rectangle recPlaceHolder;
@@ -135,7 +135,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 		maps.put(starthomeCOA, new MapLoader(starthomeCOA));
 		maps.put(Maintownhall, new MapLoader(Maintownhall));
 		maps.put(Mansion, new MapLoader(Mansion));
-		maps.put(MainTitle, new MapLoader(MainTitle));
 
 		// Set current map to main map
 		maps.get(MainTitle).setCurrent(true);
