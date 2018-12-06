@@ -67,7 +67,7 @@ public class Player {
         character.begin();
         sprite.draw(character);
         character.end();
-        playerBox.setCenter(sprite.getX(), sprite.getY());
+        playerBox.setCenter(sprite.getX() + 9, sprite.getY());
     }
 
     /**
