@@ -1,10 +1,12 @@
 package com.conquestrpg.game;
 
+import com.badlogic.gdx.math.Rectangle;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class MapLoaderTest {
+    Rectangle rectangle = new Rectangle();
 
     @Test
     public void loadDoor() {

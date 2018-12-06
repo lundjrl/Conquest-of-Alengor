@@ -15,12 +15,20 @@ import java.nio.channels.FileLock;
 import java.util.HashMap;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class RPGameTest {
 
+    private final String Maintownwarehouse = "Maintownwarehouse.tmx";
+    private final String MaintownSWhome = "MaintownSWhome.tmx";
+    private final String MaintownNWhome = "MaintownNWhome.tmx";
+    private final String starthomeCOA = "starthomeCOA.tmx";
+    private final String Maintownhall = "Maintownhall.tmx";
+    private final String Mansion = "Mansion.tmx";
+
     private HashMap<String, MapLoader> maps;
     private  String MainTitle = "MainTitle.tmx";
-    private final String ConquestOfAlengor = "ConquestOfAlengor.tmx";
+    private  String ConquestOfAlengor = "ConquestOfAlengor.tmx";
     private MapObject npcObject;
     private Player player;
     private Rectangle rectangle;
@@ -71,6 +79,62 @@ public class RPGameTest {
         test = new RPGame();
         player = new Player();
         test.movePlayer();
+    }
+    @Test
+    public void keyRightFalse(){
+        test = new RPGame();
+        assertFalse(test.keyUp(Input.Keys.RIGHT));
+        test.movePlayer();
+
+    }
+    @Test
+    public void keyLeftPressFalse(){
+        test = new RPGame();
+        assertFalse((Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT)) && !test.isCollision(player.getPlayerBox()));
+        test.movePlayer();
+
+    }
+    @Test
+    public void keyUPPressFalse(){
+        test = new RPGame();
+        assertFalse((Gdx.input.isKeyPressed(Input.Keys.DPAD_UP)) && !test.isCollision(player.getPlayerBox()));
+        test.movePlayer();
+
+    }
+    @Test
+    public void keyDownPressFalse(){
+        test = new RPGame();
+        assertFalse((Gdx.input.isKeyPressed(Input.Keys.DPAD_DOWN) && !test.isCollision(player.getPlayerBox())));
+        test.movePlayer();
+
+    }
+    @Test
+    public void keyRightPressFalse(){
+        test = new RPGame();
+        assertFalse((Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT) && !test.isCollision(player.getPlayerBox())));
+        test.movePlayer();
+
+    }
+    @Test
+    public void keyUpFalse(){
+        test = new RPGame();
+        assertFalse(test.keyUp(Input.Keys.UP));
+        test.movePlayer();
+    }
+    @Test
+    public void keyDownFalse(){
+        test = new RPGame();
+        assertFalse(test.keyUp(Input.Keys.DOWN));
+        test.movePlayer();
+
+    }
+
+    @Test
+    public void keyLeftFalse(){
+        test = new RPGame();
+        assertFalse(test.keyUp(Input.Keys.LEFT));
+        test.movePlayer();
+
     }
     @Test
     public void keyRight(){
@@ -141,6 +205,12 @@ public class RPGameTest {
         test.checkForDoor();
     }
     @Test
+    public void testcheckforDoorFalse(){
+        test = new RPGame();
+        assertFalse(test.getCurrentMap().isDoorOverlap(player.getPlayerBox()));
+        test.checkForDoor();
+    }
+    @Test
     public void testTitleLoader() {
         test = new RPGame();
         test.stepOnDoor = test.getCurrentMap().getDoorRectangleObject().getName();
@@ -194,6 +264,104 @@ public class RPGameTest {
     public void testScrolled() {
         int amount;
         amount = 10;
+    }
+    @Test
+    public void testMapLoader(){
+        test = new RPGame();
+        assertTrue(test.getCurrentMap().isDoorOverlap(rectangle));
+    }
+    @Test
+    public void testMapLoaderfail(){
+        test = new RPGame();
+        assertFalse(test.getCurrentMap().isDoorOverlap(rectangle));
+    }
+    @Test
+    public void testAttacking(){
+        test = new RPGame();
+        test.attacking();
+        assertTrue(test.attacking());
+        test.attacking();
+    }
+
+    @Test
+    public void create() {
+    }
+
+    @Test
+    public void render() {
+    }
+
+    @Test
+    public void dispose() {
+    }
+
+    @Test
+    public void isCollision() {
+    }
+
+    @Test
+    public void movePlayer() {
+    }
+
+    @Test
+    public void checkForDoor() {
+    }
+
+    @Test
+    public void attacking() {
+    }
+
+    @Test
+    public void isAttacked() {
+    }
+
+    @Test
+    public void getCurrentMap() {
+    }
+
+    @Test
+    public void keyDown1() {
+    }
+
+    @Test
+    public void keyUp1() {
+    }
+
+    @Test
+    public void keyTyped() {
+    }
+
+    @Test
+    public void touchDown() {
+    }
+
+    @Test
+    public void touchUp() {
+    }
+
+    @Test
+    public void touchDragged() {
+    }
+
+    @Test
+    public void mouseMoved() {
+    }
+
+    @Test
+    public void scrolled() {
+    }
+    @Test
+    public void testmapFiles(){
+        test = new RPGame();
+        assertTrue(ConquestOfAlengor == "ConquestOfAlengor.tmx" );
+        assertTrue (Maintownwarehouse == "Maintownwarehouse.tmx");
+        assertTrue(MaintownSWhome == "MaintownSWhome.tmx");
+        assertTrue(MaintownNWhome == "MaintownNWhome.tmx");
+        assertTrue(starthomeCOA == "starthomeCOA.tmx");
+        assertTrue(Maintownhall == "Maintownhall.tmx");
+        assertTrue( Mansion == "Mansion.tmx");
+
+
     }
 
 

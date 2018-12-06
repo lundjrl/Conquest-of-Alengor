@@ -355,7 +355,7 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	 * For a monster attacking the player
 	 * @return false
 	 */
-	private boolean attacking(){
+	protected boolean attacking(){
 		// Getting the layer which the NPC exists
 		MapLayer npcs = maps.get(ConquestOfAlengor).getNpcLayer();
 
