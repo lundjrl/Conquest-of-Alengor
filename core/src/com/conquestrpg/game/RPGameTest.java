@@ -19,12 +19,12 @@ import static org.junit.Assert.assertTrue;
 
 public class RPGameTest {
 
-    private final String Maintownwarehouse = "Maintownwarehouse.tmx";
-    private final String MaintownSWhome = "MaintownSWhome.tmx";
-    private final String MaintownNWhome = "MaintownNWhome.tmx";
-    private final String starthomeCOA = "starthomeCOA.tmx";
-    private final String Maintownhall = "Maintownhall.tmx";
-    private final String Mansion = "Mansion.tmx";
+    private static final String Maintownwarehouse = "Maintownwarehouse.tmx";
+    private static final String MaintownSWhome = "MaintownSWhome.tmx";
+    private static final String MaintownNWhome = "MaintownNWhome.tmx";
+    private static final String starthomeCOA = "starthomeCOA.tmx";
+    private static final String Maintownhall = "Maintownhall.tmx";
+    private static final String Mansion = "Mansion.tmx";
 
     private HashMap<String, MapLoader> maps;
     private  String MainTitle = "MainTitle.tmx";

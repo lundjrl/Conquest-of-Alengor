@@ -14,29 +14,17 @@ import com.badlogic.gdx.math.Rectangle;
  */
 public class Monster extends NPC {
 
-    /** SpriteBatch that holds the character*/
-    private SpriteBatch character;
-
-    /** Texture to hold image file*/
-    private Texture texture;
-
     /** Sprite to render to screen*/
     private Sprite sprite;
 
     /** Player box used for collisions, door handling and monsters*/
     private Rectangle playerBox;
 
-    /** Holds the location of where to load NPC*/
-    protected MapObject npcObject;
-
     /** Holds the location of the npc X*/
     protected float npcX;
 
     /** Holds the location of the npc Y*/
     protected float npcY;
-
-    /** Holds the amount of movement for the player*/
-    protected float move;
 
     /** Holds iterations of i*/
     protected float i;

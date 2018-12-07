@@ -22,10 +22,6 @@ import static java.lang.System.exit;
 
 public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
-
-	/** Draws batched quads using indices */
-	private SpriteBatch batch;
-
 	/** Floats for width of camera */
 	private float width;
 	/** Floats for height of camera */
@@ -86,30 +82,27 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 
 
     /** Tilemap to load ConquestOfAlengor.tmx map */
-	private final String ConquestOfAlengor = "ConquestOfAlengor.tmx";
+	private static final String ConquestOfAlengor = "ConquestOfAlengor.tmx";
 	/** Tilemap to load Maintownwarehouse.tmx map */
-	private final String Maintownwarehouse = "Maintownwarehouse.tmx";
+	private static final String Maintownwarehouse = "Maintownwarehouse.tmx";
 	/** Tilemap to load MaintownSWhome.tmx map */
-	private final String MaintownSWhome = "MaintownSWhome.tmx";
+	private static final String MaintownSWhome = "MaintownSWhome.tmx";
 	/** Tilemap to load MaintownNWhome.tmx */
-	private final String MaintownNWhome = "MaintownNWhome.tmx";
+	private static final String MaintownNWhome = "MaintownNWhome.tmx";
 	/** Tilemap to load starthomeCOA.tmx map */
-	private final String starthomeCOA = "starthomeCOA.tmx";
+	private static final String starthomeCOA = "starthomeCOA.tmx";
 	/** Tilemap to load Maintownhall.tmx map */
-	private final String Maintownhall = "Maintownhall.tmx";
+	private static final String Maintownhall = "Maintownhall.tmx";
 	/** Tilemap to load Mansion.tmx map */
-	private final String Mansion = "Mansion.tmx";
+	private static final String Mansion = "Mansion.tmx";
 	/** Tilemap to load MainTitle.tmx map */
-	private final String MainTitle = "MainTitle.tmx";
+	private static final String MainTitle = "MainTitle.tmx";
 
 	/**
 	 * Create method in RPGgame class. Used to initialy create the game in which the player is released in.
 	 */
 	@Override
 	public void create () {
-
-		// Instantiating the batch object we created earlier
-		batch = new SpriteBatch();
 
 		// Clearing the screen
 		Gdx.gl.glClearColor(1, 0, 0, 1);

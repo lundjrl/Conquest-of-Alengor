@@ -51,19 +51,19 @@ public class MapLoader {
     private boolean isCurrent = false;
 
     /** Final string for collisions */
-    private final String COLLISION_LAYER = "COLLISION_LAYER";
+    private static final String COLLISION_LAYER = "COLLISION_LAYER";
 
     /** Final string for npc layer */
-    private final String NPC_LAYER = "NPC_LAYER";
+    private static final String NPC_LAYER = "NPC_LAYER";
 
     /** Final string for item layer */
-    private final String ITEM_LAYER = "ITEM_LAYER";
+    private static final String ITEM_LAYER = "ITEM_LAYER";
 
     /** Final string for player spawn layer */
-    private final String PLAYER_SPAWN_LAYER = "PLAYER_SPAWN_LAYER";
+    private static final String PLAYER_SPAWN_LAYER = "PLAYER_SPAWN_LAYER";
 
     /** Final string for doorway layer */
-    private final String DOORWAY_LAYER = "DOORWAY_LAYER";
+    private static final String DOORWAY_LAYER = "DOORWAY_LAYER";
 
     /** String that holds the .tmx file name */
     private String currentMapName;
