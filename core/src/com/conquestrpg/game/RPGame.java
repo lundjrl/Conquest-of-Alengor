@@ -42,9 +42,6 @@ public class  RPGame extends ApplicationAdapter implements InputProcessor {
 	/** String to hold door if player overlaps */
 	protected String stepOnDoor;
 
-    /** Rectangle placeholder */
-	private Rectangle recPlaceHolder;
-
 	/** Hold last map name */
 	private String lastMapName;
 

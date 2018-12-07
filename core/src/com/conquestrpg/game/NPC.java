@@ -80,8 +80,6 @@ public class NPC {
         sprite.setPosition(npcX, npcY );
         playerBox.setPosition(sprite.getX(), sprite.getY());
 
-         // For if enemy
-         //move = -0.3f;
     }
 
     /**
