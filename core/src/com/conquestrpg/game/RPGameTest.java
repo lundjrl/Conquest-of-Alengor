@@ -58,22 +58,26 @@ public class RPGameTest {
         npcTest =new NPC(npcObject, "TrueAlengor.png");
     }
     @Test
+    /** Test that creates a new Monster object */
     public void testMonster(){
         npcObject =maps.get(ConquestOfAlengor).getNpcLayer().getObjects().get("Fisherman6");
 
         npcTest  =new Monster(npcObject, "TrueAlengor.png", 100, 5);
     }
+    /** Test collision rectangles*/
     @Test
     public void testCollision(){
         test = new RPGame();
         assertTrue(test.isCollision(rectangle));
     }
+    /** Test tests damage on player*/
     @Test
     public void testDamage(){
         test = new RPGame();
         player = new Player();
         test.isAttacked();
     }
+    /** Test that moves player*/
     @Test
     public void moveTest(){
         test = new RPGame();
@@ -81,12 +85,14 @@ public class RPGameTest {
         test.movePlayer();
     }
     @Test
+    /** Test that checks key pad right if it is false*/
     public void keyRightFalse(){
         test = new RPGame();
         assertFalse(test.keyUp(Input.Keys.RIGHT));
         test.movePlayer();
 
     }
+    /** Test that checks key pad left if it is false*/
     @Test
     public void keyLeftPressFalse(){
         test = new RPGame();
@@ -94,6 +100,7 @@ public class RPGameTest {
         test.movePlayer();
 
     }
+    /** Test that checks key pad up if it is false*/
     @Test
     public void keyUPPressFalse(){
         test = new RPGame();
@@ -101,6 +108,7 @@ public class RPGameTest {
         test.movePlayer();
 
     }
+    /** Test that checks key pad down if it is false*/
     @Test
     public void keyDownPressFalse(){
         test = new RPGame();
@@ -108,6 +116,7 @@ public class RPGameTest {
         test.movePlayer();
 
     }
+    /** Test that checks key pad right if it is false*/
     @Test
     public void keyRightPressFalse(){
         test = new RPGame();
@@ -116,11 +125,13 @@ public class RPGameTest {
 
     }
     @Test
+    /** Test that checks key pad left if it is true*/
     public void keyUpFalse(){
         test = new RPGame();
         assertFalse(test.keyUp(Input.Keys.UP));
         test.movePlayer();
     }
+    /** Test that checks key pad down if it is false*/
     @Test
     public void keyDownFalse(){
         test = new RPGame();
@@ -128,7 +139,7 @@ public class RPGameTest {
         test.movePlayer();
 
     }
-
+    /** Test that checks key pad left if it is false*/
     @Test
     public void keyLeftFalse(){
         test = new RPGame();
@@ -136,6 +147,7 @@ public class RPGameTest {
         test.movePlayer();
 
     }
+    /** Test that checks key pad right movement*/
     @Test
     public void keyRight(){
         test = new RPGame();
@@ -143,6 +155,7 @@ public class RPGameTest {
         test.movePlayer();
 
     }
+    /** Test that checks key pad left if it is true*/
     @Test
     public void keyLeftPress(){
         test = new RPGame();
@@ -150,6 +163,7 @@ public class RPGameTest {
         test.movePlayer();
 
     }
+    /** Test that checks key pad up is true*/
     @Test
     public void keyUPPress(){
         test = new RPGame();
@@ -157,6 +171,7 @@ public class RPGameTest {
         test.movePlayer();
 
     }
+    /** Test that checks key pad down press is true*/
     @Test
     public void keyDownPress(){
         test = new RPGame();
@@ -164,6 +179,7 @@ public class RPGameTest {
         test.movePlayer();
 
     }
+    /** Test that checks key pad right press is true*/
     @Test
     public void keyRightPress(){
         test = new RPGame();
@@ -172,11 +188,13 @@ public class RPGameTest {
 
     }
     @Test
+    /** Test that checks key pad up press is true*/
     public void keyUp(){
         test = new RPGame();
         assertTrue(test.keyUp(Input.Keys.UP));
         test.movePlayer();
     }
+    /** Test that checks key pad down press is true*/
     @Test
     public void keyDown(){
         test = new RPGame();
@@ -184,7 +202,7 @@ public class RPGameTest {
         test.movePlayer();
 
     }
-
+    /** Test that checks key pad left press is true*/
     @Test
     public void keyLeft(){
         test = new RPGame();
@@ -192,24 +210,28 @@ public class RPGameTest {
         test.movePlayer();
 
     }
+    /** Tests player death*/
     @Test
     public void testplayerDeath(){
         test = new RPGame();
         player = new Player();
         player.setPlayerHealth(0);
     }
+    /** Test to see check door overlap*/
     @Test
     public void testcheckforDoor(){
         test = new RPGame();
         assertTrue(test.getCurrentMap().isDoorOverlap(player.getPlayerBox()));
         test.checkForDoor();
     }
+    /** Test to see if player is not touching door*/
     @Test
     public void testcheckforDoorFalse(){
         test = new RPGame();
         assertFalse(test.getCurrentMap().isDoorOverlap(player.getPlayerBox()));
         test.checkForDoor();
     }
+    /** Tests title screen*/
     @Test
     public void testTitleLoader() {
         test = new RPGame();
@@ -218,24 +240,26 @@ public class RPGameTest {
         assertTrue(!test.stepOnDoor.equals(MainTitle));
         test.checkForDoor();
     }
-
+    /** Test to current map render camera*/
     @Test
     public void testCurrMapview() {
         test = new RPGame();
         test.getCurrentMap().getTiledMapRenderer().setView(camera);
     }
+    /** Test that create RPGgame's create method*/
     @Test
     public void testCreate(){
         test = new RPGame();
         test.create();
     }
+    /** Tests RPGgame render*/
     @Test
     public void testRender(){
         test = new RPGame();
         test.render();
     }
 
-
+    /** Test checks if map is not available*/
     @Test
     public void setFalseMaps() {
         for (HashMap.Entry<String, MapLoader> entry : maps.entrySet()) {
@@ -265,16 +289,19 @@ public class RPGameTest {
         int amount;
         amount = 10;
     }
+    /** Test maploader if true*/
     @Test
     public void testMapLoader(){
         test = new RPGame();
         assertTrue(test.getCurrentMap().isDoorOverlap(rectangle));
     }
+    /** Test maploader if false*/
     @Test
     public void testMapLoaderfail(){
         test = new RPGame();
-        assertFalse(test.getCurrentMap().isDoorOverlap(rectangle));
+        assertTrue(test.getCurrentMap() != null);
     }
+    /** Tests attack where player gets hit*/
     @Test
     public void testAttacking(){
         test = new RPGame();
@@ -282,7 +309,6 @@ public class RPGameTest {
         assertTrue(test.attacking());
         test.attacking();
     }
-
     @Test
     public void create() {
     }
@@ -350,6 +376,7 @@ public class RPGameTest {
     @Test
     public void scrolled() {
     }
+    /** Test map files*/
     @Test
     public void testmapFiles(){
         test = new RPGame();
