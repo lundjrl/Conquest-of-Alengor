@@ -1,2 +1,2 @@
 # Conquest-of-Alengor
-SE Semester long progect.
+Software Engineering semester long project.
